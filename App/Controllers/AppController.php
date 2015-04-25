@@ -5,7 +5,7 @@ namespace App\Controllers;
 
 use Core\Controller;
 
-class AppController extends Controller;
+class AppController extends Controller
 {
 
 } 
