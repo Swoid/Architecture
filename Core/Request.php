@@ -13,7 +13,8 @@ class Request
 		if (isset($_SERVER['PATH_INFO'])) {
 			$this->url = $_SERVER['PATH_INFO'];
 		} else {
-			$this->url = "d_controller/d_action";
+            $routes = include(ROUTES);
+			$this->url = $routes['default'];
 		}
 	}
 
