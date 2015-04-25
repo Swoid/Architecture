@@ -1,5 +1,9 @@
 <?php 
 
 return [
-	'd_controller/d_action',
+    "default" => 'home/index',
+    'controller/action',
+    'controller/action',
+    'controller/action',
+    'controller/action'
 ];

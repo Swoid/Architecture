@@ -8,4 +8,4 @@ use Core\Controller;
 class AppController extends Controller
 {
 
-} 
+}
