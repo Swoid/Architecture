@@ -9,12 +9,16 @@ class Dispatcher
 
 	public function __construct()
 	{
+        // On initialise l'objet Request
 		$this->Request = new Request();
 
+        // On parse la requete (on trouve le controller, l'action...)
 		Router::parse($this->Request);
 
+        // On défini la route actuelle
 		$route = $this->Request->controller . '/' . $this->Request->action;
 
+        // On regarde si elle est disponnible
         if (in_array($route, include(ROUTES))) {
             $controllerName = 'App\\Controllers\\' . ucfirst($this->Request->controller) . 'Controller';
             $controller = new $controllerName;
