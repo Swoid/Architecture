@@ -6,6 +6,7 @@ namespace Core;
 
 class Dispatcher 
 {
+    public $Request = null;
 
 	public function __construct()
 	{
@@ -21,7 +22,7 @@ class Dispatcher
         // On regarde si elle est disponnible
         if (in_array($route, include(ROUTES))) {
             $controllerName = 'App\\Controllers\\' . ucfirst($this->Request->controller) . 'Controller';
-            $controller = new $controllerName;
+            $controller = new $controllerName($this->Request, $this->Request->controller);
 
             $data = call_user_func([$controller,$this->Request->action]);
             if(!empty($data)) {
