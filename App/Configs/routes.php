@@ -1,8 +1,8 @@
 <?php 
 
 return [
-    "default" => 'messages/index',
-    'controller/action',
+    'messages/index', // Route par défaut !
+    'users/login',
     'controller/action',
     'controller/action',
     'controller/action'
