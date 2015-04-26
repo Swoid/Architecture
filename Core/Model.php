@@ -109,4 +109,52 @@ class Model
         return $req->fetchAll();
     }
 
+    /**
+     * Créer une entrée en bdd
+     * @param $data
+     * @param $table
+     * @return bool
+     */
+    public function create(\stdClass $data, $table = null)
+    {
+        if (method_exists($this, "beforeSave")) {
+            $this->beforeSave($this->data);
+        }
+
+        $fields = $values = $tmp = [];
+
+        foreach ($data as $k => $v) {
+            $fields[] = $k;
+            $tmp[] = ':' . $k;
+            $values[':' . $k] = $v;
+        }
+
+        $fields = "(" . implode(',', $fields) . ")";
+        $tmp = "(" . implode(',', $tmp) . ")";
+
+        if ($table == null)
+            $table = $this->table;
+
+        $sql = 'INSERT INTO ' . $table . ' ' . $fields . ' VALUES ' . $tmp;
+
+        $pdost = $this->db->prepare($sql);
+        try {
+            $pdost->execute($values);
+            return true;
+        } catch (\PDOException $e) {
+            return false;
+        }
+    }
+
+    /**
+     * Permet de récuperer les infos en bdd pour vérifier si l'utilisateur à bien entré un bon login/mdp
+     * @param $username
+     * @return stdClass      un objet content les indos trouvées.
+     */
+    public function getLogged($username)
+    {
+        $req = $this->db->query("SELECT id,password FROM users WHERE username='$username';");
+        return $req->fetch();
+    }
+
 } 
