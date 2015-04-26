@@ -4,3 +4,6 @@
 *.iml
 
 *.xml
+
+config.codekit
+config.rb
