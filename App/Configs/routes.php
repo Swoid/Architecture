@@ -2,8 +2,8 @@
 
 return [
     'messages/index', // Route par défaut !
-    'users/login',
+    'users/loggin',
     'users/register',
-    'controller/action',
-    'controller/action'
+    'users/logout',
+    'users/clear'
 ];
