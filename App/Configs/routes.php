@@ -1,7 +1,7 @@
 <?php 
 
 return [
-    "default" => 'home/index',
+    "default" => 'messages/index',
     'controller/action',
     'controller/action',
     'controller/action',
