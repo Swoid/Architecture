@@ -1,0 +1,45 @@
+.publish
+	width: 100%
+	margin: 0 auto 60px
+	text-align: center
+
+	form
+		margin-left: 25px
+		display: inline-block
+		vertical-align: top
+		position: relative
+		width: 40%
+
+		div
+			&:before
+				content: ""
+				display: inline-block
+				position: absolute
+				left: -9px
+				top: calc(50% - 8px)
+				width: 10px
+				height: 16px
+				background: url(../img/speech-arrow.svg) no-repeat
+				background-size: 10px 16px
+
+		[type="text"]
+			width: 100%
+			border: none
+			padding: 20px 30px
+			border-radius: 6px
+			font-size: 14px
+			color: $blue
+			@include input-placeholder($lightblue)
+
+			&:focus
+				outline: none
+
+		[type="submit"]
+			display: none
+
+	&.friend
+		width: 100%
+		text-align: left
+
+		form
+			width: 68%
