@@ -14,7 +14,7 @@ class Request
 			$this->url = $_SERVER['PATH_INFO'];
 		} else {
             $routes = include(ROUTES);
-			$this->url = $routes['default'];
+			$this->url = $routes[0];
 		}
 	}
 
