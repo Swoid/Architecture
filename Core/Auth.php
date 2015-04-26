@@ -19,10 +19,19 @@ class Auth
                 return false;
             } else {
                 $_SESSION['id'] = $user->id;
+                if(isset($data->remember)) {
+                    Cookies::set('username',$user->username);
+                }
                 return true;
             }
         } else {
             return false;
         }
+    }
+
+    public function logout()
+    {
+        unset($_SESSION['id']);
+        Cookies::remove('username');
     }
 } 
