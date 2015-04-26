@@ -153,7 +153,7 @@ class Model
      */
     public function getLogged($username)
     {
-        $req = $this->db->query("SELECT id,password FROM users WHERE username='$username';");
+        $req = $this->db->query("SELECT id,password,username FROM users WHERE username='$username';");
         return $req->fetch();
     }
 
