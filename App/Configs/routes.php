@@ -3,7 +3,7 @@
 return [
     'messages/index', // Route par défaut !
     'users/login',
-    'controller/action',
+    'users/register',
     'controller/action',
     'controller/action'
 ];
