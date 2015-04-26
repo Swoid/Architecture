@@ -20,4 +20,8 @@ class Html
     {
         return '<script type="text/javascript" src="'. ASSETS .'js/' . $name . '.js"></script>';
     }
+
+    public static function href($link){
+        return ROOT . $link;
+    }
 }
