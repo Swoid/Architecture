@@ -8,6 +8,7 @@ class Controller
     public $view = null,
            $layout = 'default',
            $Session = false,
+           $rendered = false,
            $name = null,
            $Request = null;
 
@@ -32,6 +33,17 @@ class Controller
         $className = 'App\\Models\\' . $name;
 
         $this->$name = new $className();
+    }
+
+    public function render()
+    {
+        if(!$this->rendered) {
+            ob_start();
+            require('./App/Views/' . ucfirst($this->name) . '/' . $this->view . '.php');
+            $layout_content = ob_get_clean();
+            require('./App/Views/Layouts/' . $this->layout . '.php');
+            $this->rendered = true;
+        }
     }
 }
 
