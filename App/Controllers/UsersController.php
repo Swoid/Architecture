@@ -4,18 +4,21 @@
 namespace App\Controllers;
 
 
+use Core\Cookies;
+
 class UsersController extends AppController
 {
-    public function login()
+    public function loggin()
     {
         $this->layout = 'log';
         $d['errors'] = [];
+
         if($this->Request->isPost) {
             if($this->User->validate($this->Request->data)) {
                 if($this->Auth->login($this->User,$this->Request->data)){
-                    die('ouiiiiiiii');
+                   header("Location: " . ROOT . 'messages/index');
                 }else{
-                    die("noooooon");
+                    $d['errors'] = $this->User->errors();
                 }
             }else {
                 $d['errors'] = $this->User->errors();
@@ -36,5 +39,18 @@ class UsersController extends AppController
             }
         }
         $this->set($d);
+    }
+
+    public function logout()
+    {
+        $this->Auth->logout();
+        header("Location: " . ROOT . 'users/loggin');
+    }
+
+    public function clear()
+    {
+        Cookies::remove('username');
+        unset($_SESSION['id']);
+        header("Location: " . ROOT . 'users/loggin');
     }
 } 
