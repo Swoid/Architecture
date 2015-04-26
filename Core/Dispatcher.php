@@ -4,7 +4,7 @@
 namespace Core;
 
 
-class Dispatcher 
+class Dispatcher
 {
     public $Request = null;
 
@@ -29,10 +29,7 @@ class Dispatcher
                 extract($data);
             }
 
-            ob_start();
-            require('./App/Views/' . ucfirst($this->Request->controller) . '/' . $controller->view . '.php');
-            $layout_content = ob_get_clean();
-            require('./App/Views/Layouts/' . $controller->layout . '.php');
+            $controller->render();
         } else {
             die("Page introuvable");
         }
