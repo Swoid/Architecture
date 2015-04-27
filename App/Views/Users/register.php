@@ -5,8 +5,8 @@
         <img src="<?= ASSETS; ?>img/logo.svg" alt="" width="100px"/>
         <form action="<?= ROOT; ?>users/register" class="form" method="post">
             <div>
-                <label for="login">Login</label>
-                <input type="text" id="login" name="username" placeholder="Enter your login ...">
+                <label for="login">Nom d'utilisateur</label>
+                <input type="text" id="login" name="username" placeholder="Entrez votre nom d'utilisateur ...">
                 <label for="firstname">Prénom</label>
                 <input type="text" id="firstname" name="firstname" placeholder="Entrez votre prénom ...">
                 <label for="firstname">Nom</label>
@@ -16,6 +16,6 @@
                 <input class="submit-button" type="submit" value="S'inscire">
             </div>
         </form>
-        <a href="<?= Html::href('users/loggin'); ?>">Vous avez déjà un compte ?</a>
+        <a href="<?= Html::href('users/loggin'); ?>">Vous êtes déjà inscrit ?</a>
     </div>
 </div>
