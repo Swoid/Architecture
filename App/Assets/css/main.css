@@ -429,13 +429,14 @@ input {
   color: #fff; }
   .login h1, .login h2 {
     text-transform: uppercase;
-    font-weight: bold;
     letter-spacing: 5px; }
   .login h1 {
     margin: 1.5em 0;
+    font-weight: 800;
     font-size: 2.5em; }
   .login h2 {
     margin-top: 2em;
+    font-weight: bold;
     font-size: 1.6em; }
   .login form {
     margin: 3em auto;
@@ -447,7 +448,8 @@ input {
   .login form + a {
     text-transform: uppercase;
     color: #969fac;
-    font-size: 0.9em; }
+    font-size: 0.9em;
+    font-weight: bold; }
 
 .form input[type="text"], .form input[type="password"] {
   display: block;

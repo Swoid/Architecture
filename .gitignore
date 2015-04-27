@@ -7,3 +7,4 @@
 
 config.codekit
 config.rb
+*.sassc
