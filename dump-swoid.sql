@@ -7,7 +7,7 @@
 #
 # Hôte: 127.0.0.1 (MySQL 5.6.21)
 # Base de données: swoid
-# Temps de génération: 2015-04-27 07:16:24 +0000
+# Temps de génération: 2015-04-27 07:52:27 +0000
 # ************************************************************
 
 
@@ -35,6 +35,17 @@ CREATE TABLE `comments` (
   KEY `author_id` (`author_id`,`post_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+LOCK TABLES `comments` WRITE;
+/*!40000 ALTER TABLE `comments` DISABLE KEYS */;
+
+INSERT INTO `comments` (`id`, `author_id`, `post_id`, `text`, `date`)
+VALUES
+  (1,2,3,'Ouais, genre là tout de suite maintenant ? Avec plein de grillades ...','2015-04-27 09:19:32'),
+  (2,3,4,'Tu prends un cachet et tu fais pas chier !','2015-04-27 09:20:16'),
+  (3,1,4,'Ok mais si j\'ai pas envie ? ','2015-04-27 09:20:33');
+
+/*!40000 ALTER TABLE `comments` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 # Affichage de la table messages
@@ -147,7 +158,10 @@ LOCK TABLES `posts` WRITE;
 
 INSERT INTO `posts` (`id`, `author_id`, `target_id`, `date`, `text`, `image`, `comment_count`)
 VALUES
-	(1,'1','2','2015-04-27 09:08:54','Hey man ! It\'s amazing :p',NULL,NULL);
+  (1,'1','2','2015-04-27 09:08:54','Hey man ! It\'s amazing :p',NULL,0),
+  (2,'1','2','2015-04-27 09:17:55','Ce réseau social est mortel !',NULL,0),
+  (3,'2','1','2015-04-27 09:18:16','On se fait un BBQ ? ',NULL,1),
+  (4,'1','3','2015-04-27 09:18:37','J\'ai mal à la tête, que dois-je faire ??',NULL,2);
 
 /*!40000 ALTER TABLE `posts` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -171,10 +185,10 @@ LOCK TABLES `relations` WRITE;
 
 INSERT INTO `relations` (`id`, `user_id`, `friend_id`)
 VALUES
-	(1,1,2),
-	(3,1,3),
-	(2,2,1),
-	(4,3,1);
+  (1,1,2),
+  (3,1,3),
+  (2,2,1),
+  (4,3,1);
 
 /*!40000 ALTER TABLE `relations` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -204,9 +218,9 @@ LOCK TABLES `users` WRITE;
 
 INSERT INTO `users` (`id`, `username`, `firstname`, `lastname`, `tagline`, `avatar`, `password`, `post_count`, `friend_count`, `date_enregistrement`)
 VALUES
-	(1,'Swith','Jeremy','Smith','Debuggeur compulsif',NULL,'a94a8fe5ccb19ba61c4c0873d391e987982fbbd3',NULL,NULL,'2015-04-27 09:11:13'),
-	(2,'Void','Adrien','Leloup','Grilladeur compulsif',NULL,'a94a8fe5ccb19ba61c4c0873d391e987982fbbd3',NULL,NULL,'2015-04-27 09:11:13'),
-	(3,'Dr House','Hugh','Laurie','Medecin fou',NULL,'a94a8fe5ccb19ba61c4c0873d391e987982fbbd3',NULL,NULL,'2015-04-27 09:11:13');
+  (1,'Swith','Jeremy','Smith','Debuggeur compulsif',NULL,'a94a8fe5ccb19ba61c4c0873d391e987982fbbd3',NULL,NULL,'2015-04-27 09:11:13'),
+  (2,'Void','Adrien','Leloup','Grilladeur compulsif',NULL,'a94a8fe5ccb19ba61c4c0873d391e987982fbbd3',NULL,NULL,'2015-04-27 09:11:13'),
+  (3,'Dr House','Hugh','Laurie','Medecin fou',NULL,'a94a8fe5ccb19ba61c4c0873d391e987982fbbd3',NULL,NULL,'2015-04-27 09:11:13');
 
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
