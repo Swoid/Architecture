@@ -4,7 +4,7 @@
 namespace App\Controllers;
 
 
-use Core\Cookies;
+use Core\Helpers\Cookies;
 
 class UsersController extends AppController
 {
