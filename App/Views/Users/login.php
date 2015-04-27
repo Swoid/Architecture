@@ -13,8 +13,8 @@
         <form action="<?= ROOT; ?>users/loggin" class="form" method="post">
             <div>
                 <?php if(!Cookies::get('username')): ?>
-                    <label for="username">Login</label>
-                    <input type="text" name="username" id="username" placeholder="Entrez votre login ..."/>
+                    <label for="username">Nom d'utilisateur</label>
+                    <input type="text" name="username" id="username" placeholder="Entrez votre nom d'utilisateur ..."/>
                 <?php else: ?>
                     <input type="hidden" name="username" value="<?= Cookies::get('username'); ?>"/>
                 <?php endif; ?>

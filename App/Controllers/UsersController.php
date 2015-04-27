@@ -8,7 +8,7 @@ use Core\Cookies;
 
 class UsersController extends AppController
 {
-    public function loggin()
+    public function login()
     {
         $this->layout = 'log';
         $d['errors'] = [];
