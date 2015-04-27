@@ -8,7 +8,7 @@ use Core\Cookies;
 
 class UsersController extends AppController
 {
-    public function loggin()
+    public function connect()
     {
         $this->layout = 'log';
         $d['errors'] = [];
@@ -44,13 +44,13 @@ class UsersController extends AppController
     public function logout()
     {
         $this->Auth->logout();
-        header("Location: " . ROOT . 'users/loggin');
+        header("Location: " . ROOT . 'users/connect');
     }
 
     public function clear()
     {
         Cookies::remove('username');
         unset($_SESSION['id']);
-        header("Location: " . ROOT . 'users/loggin');
+        header("Location: " . ROOT . 'users/connect');
     }
 } 

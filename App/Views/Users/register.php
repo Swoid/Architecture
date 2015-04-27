@@ -16,6 +16,6 @@
                 <input class="submit-button" type="submit" value="S'inscire">
             </div>
         </form>
-        <a href="<?= Html::href('users/loggin'); ?>">Vous êtes déjà inscrit ?</a>
+        <a href="<?= Html::href('users/connect'); ?>">Vous êtes déjà inscrit ?</a>
     </div>
 </div>

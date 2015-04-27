@@ -1,4 +1,4 @@
-<?php use Core\Helpers\Html, Core\Cookies; ?>
+<?php use Core\Helpers\Html, Core\Helpers\Cookies; ?>
 <div class="container">
     <div class="login">
         <h1>Connectez-<em>vous</em></h1>
@@ -10,7 +10,7 @@
             <img src="<?= ASSETS; ?>img/logo.svg" alt="" width="100px"/>
             <h2>Qui êtes-vous ?</h2>
         <?php endif; ?>
-        <form action="<?= ROOT; ?>users/loggin" class="form" method="post">
+        <form action="<?= ROOT; ?>users/connect" class="form" method="post">
             <div>
                 <?php if(!Cookies::get('username')): ?>
                     <label for="username">Login</label>
