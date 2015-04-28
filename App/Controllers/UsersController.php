@@ -12,11 +12,10 @@ class UsersController extends AppController
     {
         $this->layout = 'log';
         $d['errors'] = [];
-
         if($this->Request->isPost) {
             if($this->User->validate($this->Request->data)) {
-                if($this->Auth->login($this->User,$this->Request->data)){
-                   header("Location: " . ROOT . 'messages/index');
+                if($this->Auth->login($this->Request->data)){
+                    header("Location: " . ROOT . 'messages/index');
                 }else{
                     $d['errors'] = $this->User->errors();
                 }
@@ -33,7 +32,7 @@ class UsersController extends AppController
         $d['errors'] = [];
         if($this->Request->isPost){
             if($this->User->validate($this->Request->data)) {
-                $this->Auth->register($this->User,$this->Request->data);
+                $this->Auth->register($this->Request->data);
             }else {
                 $d['errors'] = $this->User->errors();
             }
@@ -50,6 +49,7 @@ class UsersController extends AppController
     public function clear()
     {
         Cookies::remove('username');
+        Cookies::remove('token');
         unset($_SESSION['id']);
         header("Location: " . ROOT . 'users/connect');
     }
