@@ -16,6 +16,7 @@ class Controller
 
     function __construct(Request $request, $name)
     {
+
         $this->Request = $request;
         $this->name = $name;
         $this->view = $request->action;
@@ -24,6 +25,10 @@ class Controller
         }
         if (!$this->Auth) {
             $this->Auth = new Auth();
+        }
+
+        if(method_exists($this,'beforeFilter')) {
+            $this->beforeFilter();
         }
         $this->loadModel();
     }
