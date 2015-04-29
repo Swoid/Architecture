@@ -24,6 +24,10 @@ class Dispatcher
             $controllerName = 'App\\Controllers\\' . ucfirst($this->Request->controller) . 'Controller';
             $controller = new $controllerName($this->Request, $this->Request->controller);
 
+            if(method_exists($controller,'beforeFilter')) {
+                $controller->beforeFilter();
+            }
+
             $data = call_user_func([$controller,$this->Request->action]);
             if(!empty($data)) {
                 extract($data);
