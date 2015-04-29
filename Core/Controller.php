@@ -27,9 +27,6 @@ class Controller
             $this->Auth = new Auth();
         }
 
-        if(method_exists($this,'beforeFilter')) {
-            $this->beforeFilter();
-        }
         $this->loadModel();
     }
 
@@ -74,6 +71,11 @@ class Controller
             $this->vars[$key] = $value;
         }
 
+    }
+
+    public function redirect($url = ''){
+        header('Location: ' . ROOT . $url);
+        exit();
     }
 }
 
