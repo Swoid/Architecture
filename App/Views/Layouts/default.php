@@ -11,7 +11,7 @@
     <div class="container">
         <div class="nav">
             <a href="">Accueil</a>
-            <a href="">Se déconnecter</a>
+            <a href="<?= Html::href('users/logout'); ?>">Se déconnecter</a>
             <div class="search search-primary">
                 <button class="popup-button">Search</button>
                 <div class="popup">
