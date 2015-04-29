@@ -4,7 +4,7 @@
         <div class="post">
             <div class="header">
                 <?= Html::img('avatar-medium.png'); ?>
-                <span><?= $post->firstname . ' ' . $post->lastname; ?></span>
+                <span><?= $post->firstname . ' ' . $post->lastname; ?> <?= isset($post->target) ? '-> ' . $post->target->firstname . ' ' . $post->target->lastname  :''; ?></span>
                 <p class="date"><?= $post->date; ?></p>
             </div>
             <p class="main">
