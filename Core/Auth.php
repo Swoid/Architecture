@@ -21,6 +21,7 @@ class Auth extends Model
                 return false;
             } else {
                 $_SESSION['id'] = $user->id;
+                $_SESSION['username'] = $user->username;
                 if(isset($data->remember)) {
                     Cookies::set('username',$user->username);
                     Cookies::set('token',sha1($user->username . $user->id));
@@ -40,6 +41,7 @@ class Auth extends Model
                 return false;
             } else {
                 $_SESSION['id'] = $user->id;
+                $_SESSION['username'] = $user->username;
                 Cookies::set('username',$user->username);
                 Cookies::set('token',Cookies::get('token'));
                 return true;
