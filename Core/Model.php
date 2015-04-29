@@ -18,6 +18,12 @@ class Model
      */
     protected $table = null;
 
+    /**
+     * Clé primaire par défaut
+     * @var string
+     */
+    protected $primaryKey = 'id';
+
     function __construct()
     {
         if (is_null($this->db))
