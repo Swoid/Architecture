@@ -1,7 +1,7 @@
 <?php 
 
 return [
-    'messages/index', // Route par défaut !
+    'posts/index', // Route par défaut !
     'users/connect',
     'users/register',
     'users/logout',
