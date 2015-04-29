@@ -29,7 +29,7 @@ class Cookies
             $time = time() + 7 * 24 * 3600;
         }
 
-        setcookie($key,$value,$time);
+        setcookie($key,$value,$time,'/');
 
         return true;
     }
@@ -41,8 +41,7 @@ class Cookies
      */
     public static function remove($key)
     {
-        setcookie($key,"",time() - 7 * 24 * 3600);
-
+        setcookie($key,"",time() - 7 * 24 * 3600,'/');
         return true;
     }
 } 
