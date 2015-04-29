@@ -6,5 +6,32 @@ namespace App\Models;
 
 class Post extends AppModel
 {
+    /**
+     * Les tables liées
+     * @var array
+     */
+    public $joins = [
+        'users' => 'author_id',
+        'comments'=> 'post_id',
+    ];
 
+    /**
+     * Récupère tous les posts à afficher sur l'accueil
+     * @param $user_id
+     * @return mixed
+     */
+    public function getHomePosts($user_id)
+    {
+        $sql = 'SELECT
+                  author_id, target_id, date, text, comment_count, posts.id as p_id,
+                  firstname, lastname, avatar, users.id as u_id
+                FROM posts
+                LEFT JOIN users ON users.id = posts.author_id
+                LEFT JOIN relations ON user_id = users.id
+                WHERE relations.friend_id = :user_id
+                ORDER BY date DESC';
+        $pdost = $this->db->prepare($sql);
+        $pdost->execute([':user_id'=>$user_id]);
+        return $pdost->fetchAll();
+    }
 } 
