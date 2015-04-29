@@ -22,13 +22,13 @@ class Post extends AppModel
      */
     public function getHomePosts($user_id)
     {
-        $sql = 'SELECT
+        $sql = 'SELECT DISTINCT
                   author_id, target_id, date, text, comment_count, posts.id as p_id,
                   firstname, lastname, avatar, users.id as u_id
                 FROM posts
                 LEFT JOIN users ON users.id = posts.author_id
                 LEFT JOIN relations ON user_id = users.id
-                WHERE relations.friend_id = :user_id
+                WHERE friend_id = :user_id OR ( friend_id != :user_id AND user_id = :user_id )
                 ORDER BY date DESC';
         $pdost = $this->db->prepare($sql);
         $pdost->execute([':user_id'=>$user_id]);
