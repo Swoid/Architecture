@@ -15,7 +15,7 @@ class UsersController extends AppController
         if($this->Request->isPost) {
             if($this->User->validate($this->Request->data)) {
                 if($this->Auth->login($this->Request->data)){
-                    $this->redirect('messages/index');
+                    $this->redirect('posts/index');
                 }else{
                     $d['errors'] = $this->User->errors();
                 }
