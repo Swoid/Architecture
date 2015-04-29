@@ -15,7 +15,7 @@ class UsersController extends AppController
         if($this->Request->isPost) {
             if($this->User->validate($this->Request->data)) {
                 if($this->Auth->login($this->Request->data)){
-                    header("Location: " . ROOT . 'messages/index');
+                    $this->redirect('messages/index');
                 }else{
                     $d['errors'] = $this->User->errors();
                 }
@@ -43,7 +43,7 @@ class UsersController extends AppController
     public function logout()
     {
         $this->Auth->logout();
-        header("Location: " . ROOT . 'users/connect');
+        $this->redirect('users/connect');
     }
 
     public function clear()
@@ -51,6 +51,6 @@ class UsersController extends AppController
         Cookies::remove('username');
         Cookies::remove('token');
         unset($_SESSION['id']);
-        header("Location: " . ROOT . 'users/connect');
+        $this->redirect('users/connect');
     }
 } 
