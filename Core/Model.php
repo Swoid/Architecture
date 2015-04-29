@@ -115,6 +115,14 @@ class Model
         return $req->fetchAll();
     }
 
+    public function getFirst($conditions = null, $table = null){
+        return current($this->get($conditions,$table));
+    }
+
+    public function getLast($conditions = null, $table = null){
+        return end($this->get($conditions,$table));
+    }
+
     /**
      * Créer une entrée en bdd
      * @param $data
