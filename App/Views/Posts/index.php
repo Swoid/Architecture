@@ -3,7 +3,7 @@
     <?php foreach($posts as $post): ?>
         <div class="post">
             <div class="header">
-                <?= Html::img('avatar-medium.png'); ?>
+                <img src="<?= ASSETS .'img/' . $post->avatar; ?>" alt="" width="59"/>
                 <span><?= $post->firstname . ' ' . $post->lastname; ?> <?= isset($post->target) ? '-> ' . $post->target->firstname . ' ' . $post->target->lastname  :''; ?></span>
                 <p class="date"><?= $post->date; ?></p>
             </div>
@@ -16,7 +16,7 @@
                     <ul>
                         <li>
                             <?php foreach($post->comments as $comment): ?>
-                                <?= Html::img('avatar.png'); ?>
+                                <img src="<?= ASSETS .'img/' . $comment->avatar; ?>" alt="" width="43"/>
                                 <span><?= $comment->text; ?></span>
                                 <span class="time"><?= $comment->date; ?></span>
                             <?php endforeach; ?>
