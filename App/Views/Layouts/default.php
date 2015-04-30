@@ -10,7 +10,7 @@
 <div id="header">
     <div class="container">
         <div class="nav">
-            <a href="">Accueil</a>
+            <a href="<?= Html::href('posts/index'); ?>">Accueil</a>
             <a href="<?= Html::href('users/logout'); ?>">Se déconnecter</a>
             <div class="search search-primary">
                 <button class="popup-button">Search</button>
@@ -64,7 +64,7 @@
                         </li>
                     </ul>
                 </div>
-                <a href="" class="username">Jérémy Smith</a>
+                <a href="" class="username"><?= $_SESSION['username']; ?></a>
             </div>
         </div>
     </div>
@@ -86,8 +86,8 @@
 <div id="footer">
     <div class="container">
         <div class="nav">
-            <a href="">Accueil</a>
-            <a href="">Se déconnecter</a>
+            <a href="<?= Html::href('posts/index'); ?>">Accueil</a>
+            <a href="<?= Html::href('users/logout'); ?>">Se déconnecter</a>
             <div class="search search-secondary">
                 <button class="popup-button">Search</button>
                 <div class="popup">
@@ -100,7 +100,7 @@
                 </div>
             </div>
             <div class="right">
-                <a href=""class="username">Jérémy Smith</a>
+                <a href=""class="username"><?= $_SESSION['username']; ?></a>
             </div>
         </div>
     </div>
