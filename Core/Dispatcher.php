@@ -28,7 +28,8 @@ class Dispatcher
                 $controller->beforeFilter();
             }
 
-            $data = call_user_func([$controller,$this->Request->action]);
+            $data = call_user_func_array([$controller,$this->Request->action],$this->Request->params);
+
             if(!empty($data)) {
                 extract($data);
             }
