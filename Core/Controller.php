@@ -77,5 +77,14 @@ class Controller
         header('Location: ' . ROOT . $url);
         exit();
     }
+
+    /**
+     * Permet d'afficher un élément (~= widget)
+     * @param $name le nom de l'élément que l'on souhaite afficher
+     */
+    function element($name)
+    {
+        include_once "./App/Views/Elements" . DS . $name . ".php";
+    }
 }
 
