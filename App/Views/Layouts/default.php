@@ -64,7 +64,7 @@
                         </li>
                     </ul>
                 </div>
-                <a href="" class="username"><?= $_SESSION['username']; ?></a>
+                <a href="<?= Html::href('users/index'); ?>" class="username"><?= $_SESSION['username']; ?></a>
             </div>
         </div>
     </div>
@@ -100,7 +100,7 @@
                 </div>
             </div>
             <div class="right">
-                <a href=""class="username"><?= $_SESSION['username']; ?></a>
+                <a href="<?= Html::href('users/index'); ?>"class="username"><?= $_SESSION['username']; ?></a>
             </div>
         </div>
     </div>
