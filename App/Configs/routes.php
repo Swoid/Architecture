@@ -5,5 +5,6 @@ return [
     'users/connect',
     'users/register',
     'users/logout',
-    'users/clear'
+    'users/clear',
+    'users/index',
 ];
