@@ -1,17 +1,18 @@
 <?php use Core\Helpers\Html; ?>
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <html>
-<head>
-    <title></title>
-    <meta charset="UTF-8">
-   <?= Html::css('main'); ?>
-</head>
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <?= Html::css('main'); ?>
+    </head>
 <body>
 <div id="header">
     <div class="container">
         <div class="nav">
             <a href="<?= Html::href('posts/index'); ?>">Accueil</a>
             <a href="<?= Html::href('users/logout'); ?>">Se déconnecter</a>
+
             <div class="search search-primary">
                 <button class="popup-button">Search</button>
                 <div class="popup">
@@ -64,7 +65,8 @@
                         </li>
                     </ul>
                 </div>
-                <a href="<?= Html::href('users/index'); ?>" class="username"><?= $_SESSION['username']; ?></a>
+                <a href="<?= Html::href('users/index/' . $_SESSION['id']); ?>"
+                   class="username"><?= $_SESSION['username']; ?></a>
             </div>
         </div>
     </div>
@@ -75,7 +77,7 @@
             <?= Html::img('avatar-medium.png'); ?>
             <form>
                 <div>
-                    <input type="text" placeholder="Publier un message ..." >
+                    <input type="text" placeholder="Publier un message ...">
                     <input type="submit">
                 </div>
             </form>
