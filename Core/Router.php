@@ -9,5 +9,6 @@ class Router
 		$url =  explode('/', trim($request->url,'/'));
 		$request->controller = $url[0];
 		$request->action = $url[1];
+        $request->params = array_slice($url,2);
 	}
 }
