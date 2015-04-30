@@ -74,7 +74,7 @@
 <main id="main">
     <div class="container">
         <div class="publish">
-            <?= Html::img('avatar-medium.png'); ?>
+            <?= Html::img($_SESSION['username'] . '-m.png'); ?>
             <form>
                 <div>
                     <input type="text" placeholder="Publier un message ...">
