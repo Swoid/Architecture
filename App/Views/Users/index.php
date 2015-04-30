@@ -57,7 +57,7 @@
                 <?php else: ?>
                     <form>
                         <div>
-                            <input type="text" placeholder="Publier un message sur la page d'Adrien ..." >
+                            <input type="text" placeholder="Publier un message sur la page de <?= $user->firstname; ?> ..." >
                             <input type="submit">
                         </div>
                     </form>
