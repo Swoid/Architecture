@@ -5,7 +5,7 @@
             <div class="post">
                 <div class="header">
                     <img src="<?= ASSETS . 'img/' . $post->avatar . '-m.png'; ?>" alt="" width="59"/>
-                    <span><?= $post->firstname . ' ' . $post->lastname; ?> <?= isset($post->target) ? '-> ' . $post->target->firstname . ' ' . $post->target->lastname : ''; ?></span>
+                    <span class="first"><?= $post->firstname . ' ' . $post->lastname; ?> <?= isset($post->target) ? ' ' . $post->target->firstname . ' ' . $post->target->lastname : ''; ?></span>
 
                     <p class="date"><?= $post->date; ?></p>
                 </div>
