@@ -340,9 +340,9 @@ input {
       font-weight: bold;
       background: none;
       border: none; }
-  .post.friend span {
+  .post span {
     margin-right: 8px; }
-    .post.friend span.first:after {
+    .post span.first:after {
       content: "";
       display: inline-block;
       vertical-align: middle;
