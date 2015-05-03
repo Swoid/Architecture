@@ -1,4 +1,4 @@
-<?php ?>
+<?php use Core\Helpers\Html; ?>
 <div id="left">
     <?php foreach ($posts as $post): ?>
         <?php if ($post->p_id % 2 != 0): ?>
@@ -10,6 +10,9 @@
                     <p class="date"><?= $post->date; ?></p>
                 </div>
                 <p class="main">
+                    <?php if(!is_null($post->image)): ?>
+                        <?= Html::img($post->image); ?>
+                    <?php endif; ?>
                     <?= $post->text; ?>
                 </p>
 
