@@ -50,7 +50,7 @@
                 <?php if($user->id == $_SESSION['id']): ?>
                     <form class="expandable" action="<?= Html::href('posts/selfPublish/'); ?>" method="post" enctype="multipart/form-data">
                         <div>
-                            <input type="text" placeholder="Publier un message sur votre page ..." >
+                            <input type="text" name="text" placeholder="Publier un message ...">
                             <input type="file" name="image" id="image"/>
                             <input type="submit">
                         </div>
