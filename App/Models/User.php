@@ -43,11 +43,15 @@ class User extends AppModel
      * @param $user_id
      * @return array
      */
-    public function getFriends($user_id)
+    public function getFriends($user_id, $limit = null)
     {
         $sql = 'SELECT avatar, firstname, lastname, users.id FROM users
                 LEFT JOIN relations ON friend_id = users.id
                 WHERE user_id = :user_id';
+
+        if($limit) {
+            $sql .= ' LIMIT ' . $limit;
+        }
         $pdost = $this->db->prepare($sql);
         $pdost->execute([':user_id' => $user_id]);
         return $pdost->fetchAll();
