@@ -12,4 +12,5 @@ return [
     'users/logout',
     'users/clear',
     'users/index',
+    'users/friends',
 ];
