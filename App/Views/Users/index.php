@@ -48,16 +48,18 @@
             <div class="publish friend">
                 <?= Html::img($_SESSION['username'] . '-m.png'); ?>
                 <?php if($user->id == $_SESSION['id']): ?>
-                    <form>
+                    <form action="<?= Html::href('posts/selfPublish/'); ?>" method="post" enctype="multipart/form-data">
                         <div>
                             <input type="text" placeholder="Publier un message sur votre page ..." >
+                            <input type="file" name="image" id="image"/>
                             <input type="submit">
                         </div>
                     </form>
                 <?php else: ?>
-                    <form>
+                    <form action="<?= Html::href('posts/friendPublish/' . $user->id); ?>" method="post" enctype="multipart/form-data">
                         <div>
-                            <input type="text" placeholder="Publier un message sur la page de <?= $user->firstname; ?> ..." >
+                            <input type="text" name="text" placeholder="Publier un message sur la page de <?= $user->firstname; ?> ..." >
+                            <input type="file" name="image" id="image"/>
                             <input type="submit">
                         </div>
                     </form>
