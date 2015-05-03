@@ -266,6 +266,8 @@ input {
     vertical-align: top;
     position: relative;
     width: 40%; }
+    .publish form.expanded [type="file"], .publish form.expanded [type="submit"] {
+      display: block; }
     .publish form div:before {
       content: "";
       display: inline-block;
