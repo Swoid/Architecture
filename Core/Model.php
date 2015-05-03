@@ -171,4 +171,38 @@ class Model
         return $req->fetch();
     }
 
+    /**
+     * Met à jour les données
+     * @param  int $id l'id de l'entrée que l'on veut update
+     * @param array|\stdClass $data les données
+     * @param  string $table le nom de la table si besoin
+     * @return bool
+     */
+    public function update($id, \stdClass $data, $table = null)
+    {
+        if (method_exists($this, "beforeSave"))
+            $this->beforeSave($this->data);
+
+        $values = $tmp = [];
+
+        foreach ($data as $d => $v) {
+            $values[':' . $d] = $v;
+            $tmp[] = $d . "=:" . $d;
+        }
+
+        $tmp = implode(',', $tmp);
+
+        if ($table == null)
+            $table = $this->table;
+
+        $sql = 'UPDATE ' . $table . ' SET ' . $tmp . ' WHERE id = ' . $id;
+        $pdost = $this->bdd->prepare($sql);
+        try {
+            $pdost->execute($values);
+            return true;
+        } catch (\PDOException $e) {
+            return false;
+        }
+    }
+
 } 
