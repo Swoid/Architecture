@@ -65,7 +65,7 @@ class Model
             $joins = [];
             foreach ($conditions['joins'] as $j) {
                 if (!isset($this->joins) || !isset($this->joins[$j])) {
-                    debug("Le model " . $this->name . " n'a pas d'association avec la table $j ! Veuillez créer un tableau public \$joins dans votre model " . $this->name, false);
+                    die("Le model " . $this->name . " n'a pas d'association avec la table $j ! Veuillez créer un tableau public \$joins dans votre model " . $this->name);
                 } else {
                     $joins[] = " JOIN $j ON $j.{$this->primaryKey} = {$this->table}." . $this->joins[$j];
                 }
@@ -131,6 +131,7 @@ class Model
      */
     public function create(\stdClass $data, $table = null)
     {
+
         if (method_exists($this, "beforeSave")) {
             $this->beforeSave($this->data);
         }
@@ -150,7 +151,6 @@ class Model
             $table = $this->table;
 
         $sql = 'INSERT INTO ' . $table . ' ' . $fields . ' VALUES ' . $tmp;
-
         $pdost = $this->db->prepare($sql);
         try {
             $pdost->execute($values);
