@@ -94,6 +94,7 @@ class UsersController extends AppController
         }
 
         $d['isFriend'] = $this->User->isFriend($_SESSION['id'],$id);
+        $d['friends'] = $this->User->getFriends($_SESSION['id']);
 
         $d['recevedPosts'] = $this->Post->get(
             [
