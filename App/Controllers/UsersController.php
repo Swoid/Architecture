@@ -78,7 +78,7 @@ class UsersController extends AppController
         $d['user'] = $this->User->getFirst(['where' => 'id=' . $id]);
         $d['ownPosts'] = $this->Post->get(
             [
-                'where' => 'author_id = ' . $id,
+                'where' => 'author_id = ' . $id . ' AND target_id = ' . $id,
                 'joins' => ['users']
             ]
         );
