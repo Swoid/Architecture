@@ -8,7 +8,7 @@
                         <?= Html::img($user->avatar . '-m.png'); ?>
                         <span class="first"><?= $user->firstname . ' ' . $user->lastname; ?></span>
                         <?php if(isset($oPost->target)): ?>
-                            <span> -> <?= $oPost->target->firstname . ' ' . $oPost->target->lastname; ?></span>
+                            <span><?= $oPost->target->firstname . ' ' . $oPost->target->lastname; ?></span>
                         <?php endif; ?>
                         <p class="date"<?= $oPost->date; ?></p>
                     </div>
