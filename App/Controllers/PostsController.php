@@ -50,7 +50,7 @@ class PostsController extends AppController
     {
         if (!is_numeric($friend_id)) {
             $this->Session->setFlash('Cet utilisateur n‘existe pas');
-            $this->redirect($this->Request->referer);
+            $this->redirect('users/index/' .$friend_id);
         }
         $this->publish($friend_id);
     }
@@ -86,11 +86,13 @@ class PostsController extends AppController
                 $this->Request->data->author_id = $_SESSION['id'];
                 $this->Request->data->target_id = $target_id;
                 $this->Post->create($this->Request->data);
+                $this->loadModel('User');
+                $this->User->updatePostCount($_SESSION['id']);
                 $this->Session->setFlash('Le message a bien été publié');
-                $this->redirect($this->Request->referer);
+                $this->redirect('users/index/' . $target_id);
             } else {
                 $this->Session->setFlash($this->Post->getErrors(), 'error');
-                $this->redirect($this->Request->referer);
+                $this->redirect('users/index/' . $target_id);
             }
         }
 
