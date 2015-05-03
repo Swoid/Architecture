@@ -13,4 +13,8 @@ return [
     'users/clear',
     'users/index',
     'users/friends',
+
+    // Messages
+    'messages/conversation',
+    'messages/send',
 ];
