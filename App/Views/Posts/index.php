@@ -1,7 +1,7 @@
 <?php use Core\Helpers\Html; ?>
 <div id="left">
     <?php foreach ($posts as $post): ?>
-        <?php if ($post->p_id % 2 != 0): ?>
+        <?php if ($post->i % 2 != 0): ?>
             <div class="post">
                 <div class="header">
                     <img src="<?= ASSETS . 'img/' . $post->avatar . '-m.png'; ?>" alt="" width="59"/>
@@ -40,7 +40,7 @@
 </div>
 <div id="right">
     <?php foreach ($posts as $post): ?>
-        <?php if ($post->p_id % 2 == 0): ?>
+        <?php if ($post->i % 2 == 0): ?>
             <div class="post">
                 <div class="header">
                     <img src="<?= ASSETS . 'img/' . $post->avatar. '-m.png'; ?>" alt="" width="59"/>
@@ -50,6 +50,9 @@
                     <p class="date"><?= $post->date; ?></p>
                 </div>
                 <p class="main">
+                    <?php if(!is_null($post->image)): ?>
+                        <?= Html::img($post->image); ?>
+                    <?php endif; ?>
                     <?= $post->text; ?>
                 </p>
 

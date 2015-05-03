@@ -16,7 +16,10 @@ class PostsController extends AppController
         $d['posts'] = $this->Post->getHomePosts($_SESSION['id']);
         $this->loadModel('Comment');
         $this->loadModel('User');
+        $i = 0;
         foreach ($d['posts'] as $post) {
+            $post->i = $i;
+            $i++;
             if ($post->author_id != $post->target_id) {
                 $post->target = $this->User->getFirst(['where' => 'id = ' . $post->target_id]);
             }
@@ -73,7 +76,7 @@ class PostsController extends AppController
             } else {
                 if (!$_FILES['image']['error']) {
                     $ext = '.' . end(explode('.', $_FILES['image']['name']));
-                    $name = md5($_FILES['image']['name']) . $ext;
+                    $name = md5(time() . $_FILES['image']['name']) . $ext;
                     $dest = './App/Assets/img/uploads/posts/';
                     $this->Request->data->image = 'uploads/posts/' . $name;
                     Image::uploadImg($dest, $name);
