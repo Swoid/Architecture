@@ -1,1 +1,1 @@
-!function(){function e(e){window.alert("lol");var t=e.target.parentNode.parentNode;t.classList.toggle("expanded")}for(var t=document.querySelectorAll(".expandable"),n=0;n<=t.length;n++)t[n].addEventListener("click",e,!1)}();
+!function(){function e(e){var t=e.target.parentNode.parentNode;t.classList.toggle("expanded")}for(var t=document.querySelectorAll(".expandable"),n=0;n<=t.length;n++)t[n].addEventListener("click",e,!1)}();

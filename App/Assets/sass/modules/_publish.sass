@@ -10,6 +10,10 @@
 		position: relative
 		width: 40%
 
+		&.expanded
+			[type="submit"], [type="file"]
+				display: block
+
 		div
 			&:before
 				content: ""
@@ -34,7 +38,7 @@
 			&:focus
 				outline: none
 
-		[type="submit"]
+		[type="submit"], [type="file"]
 			display: none
 
 	&.friend

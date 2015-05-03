@@ -266,6 +266,8 @@ input {
     vertical-align: top;
     position: relative;
     width: 40%; }
+    .publish form.expanded [type="submit"], .publish form.expanded [type="file"] {
+      display: block; }
     .publish form div:before {
       content: "";
       display: inline-block;
@@ -293,7 +295,7 @@ input {
         color: #969fac; }
       .publish form [type="text"]:focus {
         outline: none; }
-    .publish form [type="submit"] {
+    .publish form [type="submit"], .publish form [type="file"] {
       display: none; }
   .publish.friend {
     width: 100%;
@@ -451,8 +453,6 @@ input {
     font-size: 0.9em;
     font-weight: bold; }
 
-.form.expanded [type="submit"], .form.expanded [type="file"] {
-  display: block; }
 .form input[type="text"], .form input[type="password"] {
   display: block;
   width: 92.5%;
