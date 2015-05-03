@@ -293,7 +293,7 @@ input {
         color: #969fac; }
       .publish form [type="text"]:focus {
         outline: none; }
-    .publish form [type="submit"] {
+    .publish form [type="submit"], .publish form [type="file"] {
       display: none; }
   .publish.friend {
     width: 100%;
