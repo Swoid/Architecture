@@ -8,6 +8,7 @@ class Request
 {
 	public $url = null;
     public $isPost = false;
+    public $referer = null;
 
 	public function __construct()
 	{
@@ -18,14 +19,22 @@ class Request
 			$this->url = $routes[0];
 		}
 
+        $this->isPost = $_SERVER['REQUEST_METHOD'] == "POST" ? true : false;
+
         if (!empty($_POST)) {
-            $this->isPost = true;
             $this->data = new \stdClass();
             foreach ($_POST as $k => $v) {
                 $this->data->$k = $v;
             }
             unset($_POST);
         }
+
+        if(isset($_SERVER['HTTP_REFERER'])) {
+            $root = addcslashes(ROOT,'/');
+            $parts = preg_split('/'.$root.'/',$_SERVER['HTTP_REFERER']);
+            $this->referer = isset($parts[1]) ? $parts[1] : $parts[0];
+        }
+
 	}
 
 } 
