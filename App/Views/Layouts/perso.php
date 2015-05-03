@@ -75,7 +75,9 @@
             <h1><?= $user->firstname . ' ' . $user->lastname; ?></h1>
 
             <h2><?= $user->tagline; ?></h2>
-            <?php if($isFriend): ?>
+            <?php if($user->id == $_SESSION['id']): ?>
+                <button>Modifier le profil</button>
+            <?php elseif($isFriend): ?>
                 <button>Dans les contacts</button>
             <?php else: ?>
                 <button>Ajouter aux contacts</button>
