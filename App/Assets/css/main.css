@@ -266,8 +266,6 @@ input {
     vertical-align: top;
     position: relative;
     width: 40%; }
-    .publish form.expanded [type="submit"], .publish form.expanded [type="file"] {
-      display: block; }
     .publish form div:before {
       content: "";
       display: inline-block;
@@ -295,7 +293,7 @@ input {
         color: #969fac; }
       .publish form [type="text"]:focus {
         outline: none; }
-    .publish form [type="submit"], .publish form [type="file"] {
+    .publish form [type="submit"] {
       display: none; }
   .publish.friend {
     width: 100%;
@@ -431,6 +429,7 @@ input {
   color: #fff; }
   .login h1, .login h2 {
     text-transform: uppercase;
+    font-weight: bold;
     letter-spacing: 5px; }
   .login h1 {
     margin: 1.5em 0;
@@ -438,7 +437,6 @@ input {
     font-size: 2.5em; }
   .login h2 {
     margin-top: 2em;
-    font-weight: bold;
     font-size: 1.6em; }
   .login form {
     margin: 3em auto;
@@ -476,3 +474,41 @@ input {
   border-radius: 0.3em; }
   .submit-button:hover {
     cursor: pointer; }
+
+.pm {
+  clear: both;
+  width: 55%;
+  box-sizing: border-box;
+  float: right;
+  margin-bottom: 40px; }
+  .pm .header {
+    float: right;
+    margin-top: 10px; }
+  .pm .time {
+    font-size: 12px;
+    font-weight: bold;
+    color: #31d595;
+    display: block;
+    text-align: center; }
+  .pm p {
+    font-size: 14px;
+    color: #fff;
+    line-height: 1.7;
+    background-color: #3e4550;
+    width: 80%;
+    padding: 20px 30px;
+    box-sizing: border-box;
+    border-radius: 6px;
+    float: left;
+    margin-left: 40px; }
+  .pm.friend-pm {
+    float: left; }
+    .pm.friend-pm .header {
+      float: left; }
+    .pm.friend-pm p {
+      float: right;
+      margin-right: 40px;
+      margin-left: 0; }
+
+form {
+  clear: both; }
