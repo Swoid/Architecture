@@ -1,7 +1,6 @@
 ( function(){
 
 	function toggleForm(evt){
-		window.alert('lol');
 		var oForm = evt.target.parentNode.parentNode;
 		oForm.classList.toggle( "expanded" );
 	}
