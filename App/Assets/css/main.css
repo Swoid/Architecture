@@ -110,8 +110,7 @@ input {
     text-decoration: none;
     font-weight: bold;
     font-size: 14px;
-    -webkit-transition: color 0.5s;
-            transition: color 0.5s; }
+    transition: color 0.5s; }
     .nav a.username {
       margin-right: 0; }
     .nav a:hover {
@@ -146,8 +145,7 @@ input {
   padding: 20px 15px;
   box-sizing: border-box;
   text-align: left;
-  -ms-transform-origin: 50% 0%;
-      transform-origin: 50% 0%;
+  transform-origin: 50% 0%;
   -webkit-transform-origin: 50% 0%; }
   .popup.show {
     display: block;
@@ -196,25 +194,15 @@ input {
     -webkit-transform: scale3d(1, 1, 1); } }
 @keyframes expand {
   0% {
-    -webkit-transform: scale3d(1, 0, 1);
-            transform: scale3d(1, 0, 1); }
+    transform: scale3d(1, 0, 1); }
   25% {
-    -webkit-transform: scale3d(1, 1.2, 1);
-            transform: scale3d(1, 1.2, 1); }
+    transform: scale3d(1, 1.2, 1); }
   50% {
-    -webkit-transform: scale3d(1, 0.85, 1);
-            transform: scale3d(1, 0.85, 1); }
+    transform: scale3d(1, 0.85, 1); }
   75% {
-    -webkit-transform: scale3d(1, 1.05, 1);
-            transform: scale3d(1, 1.05, 1); }
+    transform: scale3d(1, 1.05, 1); }
   100% {
-    -webkit-transform: scale3d(1, 1, 1);
-            transform: scale3d(1, 1, 1); } }
-@-webkit-keyframes appear {
-  0% {
-    opacity: 0; }
-  100% {
-    opacity: 1; } }
+    transform: scale3d(1, 1, 1); } }
 @keyframes appear {
   0% {
     opacity: 0; }
@@ -463,6 +451,8 @@ input {
     font-size: 0.9em;
     font-weight: bold; }
 
+.form.expanded [type="submit"], .form.expanded [type="file"] {
+  display: block; }
 .form input[type="text"], .form input[type="password"] {
   display: block;
   width: 92.5%;

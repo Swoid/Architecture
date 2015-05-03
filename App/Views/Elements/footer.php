@@ -23,6 +23,7 @@
         </div>
     </div>
 </div>
+<?= Html::script('form'); ?>
 <?= Html::script('popup'); ?>
 </body>
 </html>
