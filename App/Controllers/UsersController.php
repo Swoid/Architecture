@@ -94,7 +94,6 @@ class UsersController extends AppController
         }
 
         $d['isFriend'] = $this->User->isFriend($_SESSION['id'],$id);
-        $d['friends'] = $this->User->getFriends($_SESSION['id']);
 
         $d['recevedPosts'] = $this->Post->get(
             [
@@ -102,6 +101,23 @@ class UsersController extends AppController
                 'joins' => ['users']
             ]
         );
+
+        $this->set($d);
+    }
+
+    /**
+     * Afficher les contacts d'un utilisateur
+     * @param $user_id
+     */
+    public function friends($user_id){
+
+        if (!is_numeric($user_id)) {
+            $this->Session->setFlash('Cet utilisateur n‘existe pas');
+            $this->redirect($this->Request->referer);
+        }
+
+        $this->layout = 'perso';
+        $d['friends'] = $this->User->getFriends($user_id);
 
         $this->set($d);
     }
