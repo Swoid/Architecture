@@ -56,7 +56,7 @@
                         </div>
                     </form>
                 <?php else: ?>
-                    <form action="<?= Html::href('posts/friendPublish/' . $user->id); ?>" method="post" enctype="multipart/form-data">
+                    <form class="expandable" action="<?= Html::href('posts/friendPublish/' . $user->id); ?>" method="post" enctype="multipart/form-data">
                         <div>
                             <input type="text" name="text" placeholder="Publier un message sur la page de <?= $user->firstname; ?> ..." >
                             <input type="file" name="image" id="image"/>
