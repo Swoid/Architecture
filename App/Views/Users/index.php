@@ -6,7 +6,7 @@
                 <div class="post">
                     <div class="header">
                         <?= Html::img($user->avatar . '-m.png'); ?>
-                        <span class="first"><?= $user->firstname . ' ' . $user->lastname; ?></span>
+                        <span><?= $user->firstname . ' ' . $user->lastname; ?></span>
                         <?php if(isset($oPost->target)): ?>
                             <span><?= $oPost->target->firstname . ' ' . $oPost->target->lastname; ?></span>
                         <?php endif; ?>
