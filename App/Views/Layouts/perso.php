@@ -89,7 +89,7 @@
                 <?php if($user->id == $_SESSION['id']): ?>
                     <a href="" class="sendmessage">Envoyer un message</a>
                 <?php else: ?>
-                    <a href="" class="sendmessage">Lui envoyer un message</a>
+                    <a href="<?= Html::href('messages/conversation/' . $user->id); ?>" class="sendmessage">Lui envoyer un message</a>
                 <?php endif; ?>
             </div>
         </div>
