@@ -190,7 +190,7 @@ trait Validator
     }
 
     // Retourne le tableau contenant toutes les erreurs
-    public function errors()
+    public function getErrors()
     {
         if (!empty($this->errors))
             return $this->errors;
