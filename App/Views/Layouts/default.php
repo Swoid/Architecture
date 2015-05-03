@@ -1,4 +1,4 @@
-<?php use Core\Helpers\Html; ?>
+<?php use Core\Helpers\Html; use Core\Session; ?>
     <!DOCTYPE html>
 <html>
     <head>
@@ -75,13 +75,15 @@
     <div class="container">
         <div class="publish">
             <?= Html::img($_SESSION['username'] . '-m.png'); ?>
-            <form>
+            <form action="<?= Html::href('posts/selfPublish'); ?>" method="post" enctype="multipart/form-data">
                 <div>
-                    <input type="text" placeholder="Publier un message ...">
+                    <input type="text" name="text" placeholder="Publier un message ...">
+                    <input type="file" name="image" id="image"/>
                     <input type="submit">
                 </div>
             </form>
         </div>
+        <?= $this->Session->flash(); ?>
         <?= $layout_content; ?>
     </div>
 </main>
