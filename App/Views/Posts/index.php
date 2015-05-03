@@ -45,7 +45,7 @@
                 <div class="header">
                     <img src="<?= ASSETS . 'img/' . $post->avatar. '-m.png'; ?>" alt="" width="59"/>
                     <span class="first"><?= $post->firstname . ' ' . $post->lastname; ?></span>
-                    <?= isset($post->target) ? '<span> -> ' . $post->target->firstname . ' ' . $post->target->lastname . '</span>' : ''; ?>
+                    <?= isset($post->target) ? '<span>' . $post->target->firstname . ' ' . $post->target->lastname . '</span>' : ''; ?>
 
                     <p class="date"><?= $post->date; ?></p>
                 </div>
