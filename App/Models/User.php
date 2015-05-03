@@ -56,4 +56,14 @@ class User extends AppModel
         $pdost->execute([':user_id' => $user_id]);
         return $pdost->fetchAll();
     }
+
+    /**
+     * Met à jour le nombre de post d'un utilisateur
+     * @param $user_id
+     */
+    public function updatePostCount($user_id)
+    {
+        $sql = "UPDATE users SET post_count = post_count + 1 WHERE id = $user_id";
+        $this->db->query($sql);
+    }
 } 
