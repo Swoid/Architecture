@@ -1,15 +1,15 @@
 ( function(){
 
-	function toggleForm(evt){
+	var aTextInputs = document.querySelectorAll( ".expandable" );
+	var i = 0, element;
+	for( ; element = aTextInputs[ i++ ] ; ){
+		element.addEventListener( "click", expand, false );
+	}
+
+	function expand(evt){
 		var oForm = evt.target.parentNode.parentNode;
-		oForm.classList.toggle( "expanded" );
+		oForm.className = "expanded";
 	}
-
-	var oForms = document.querySelectorAll( ".expandable" );
-	
-	for( var i=0; i <= oForms.length; i++ ){
-		oForms[i].addEventListener( "click", toggleForm, false );
-	}
-
 
 } )();
+
