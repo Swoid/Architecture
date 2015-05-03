@@ -1,12 +1,15 @@
 ( function(){
 
 	var aPopupButtons = document.querySelectorAll( ".popup-button" );
+    var bOpened = false;
 	var i = 0, element;
 	for( ; element = aPopupButtons[ i++ ] ; ){
 		element.addEventListener( "click", togglePopup, false );
 	}
 
-	document.addEventListener( "click", checkParent, false );
+    if(bOpened) {
+	    document.addEventListener( "click", checkParent, false );
+    }
 
 	function checkParent(event){
 		var hasParent = false;
@@ -24,6 +27,7 @@
 	}
 
 	function togglePopup(evt){
+        bOpened = true;
 		var oPopup = evt.target.nextElementSibling;
 		oPopup.classList.toggle( "show" );
 	}
