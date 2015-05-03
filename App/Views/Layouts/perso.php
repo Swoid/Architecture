@@ -84,7 +84,7 @@
             <?php endif; ?>
 
             <div class="bottom-links">
-                <a href="" class="viewcontacts"><?= $user->friend_count; ?> contacts</a>
+                <a href="<?= Html::href('users/friends/' . $user->id); ?>" class="viewcontacts"><?= $user->friend_count; ?> contacts</a>
                 <a href="" class="viewposts"><?= $user->post_count; ?> publications</a>
                 <?php if($user->id == $_SESSION['id']): ?>
                     <a href="" class="sendmessage">Envoyer un message</a>
