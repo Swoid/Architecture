@@ -75,7 +75,7 @@
     <div class="container">
         <div class="publish">
             <?= Html::img($_SESSION['username'] . '-m.png'); ?>
-            <form action="<?= Html::href('posts/selfPublish'); ?>" method="post" enctype="multipart/form-data">
+            <form class="expandable" action="<?= Html::href('posts/selfPublish'); ?>" method="post" enctype="multipart/form-data">
                 <div>
                     <input type="text" name="text" placeholder="Publier un message ...">
                     <input type="file" name="image" id="image"/>
