@@ -24,4 +24,7 @@ return [
     'notifications/getMessages',
     'notifications/getOtherCount',
     'notifications/getComments',
+
+    // Commentaires
+    'comments/comment',
 ];
