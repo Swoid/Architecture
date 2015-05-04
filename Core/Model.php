@@ -18,6 +18,8 @@ class Model
      */
     protected $table = null;
 
+    public $lastInsertId = null;
+
     /**
      * Clé primaire par défaut
      * @var string
@@ -108,7 +110,7 @@ class Model
         if (isset($conditions['order'])) {
             $query .= " ORDER BY " . $conditions['order'];
         }
-        
+
         $req = $this->db->query($query);
 
         return $req->fetchAll();
@@ -153,6 +155,7 @@ class Model
         $pdost = $this->db->prepare($sql);
         try {
             $pdost->execute($values);
+            $this->lastInsertId = $this->db->lastInsertId();
             return true;
         } catch (\PDOException $e) {
             return false;
