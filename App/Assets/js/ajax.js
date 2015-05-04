@@ -53,21 +53,13 @@ function checkMessagesNotif() {
  * Verifie le nombre de commentaires
  */
 function checkOtherNotif() {
-    var iCount = 0;
     // Nombre de commentaires
-    $.get('http://swoid.dev/notifications/getCommentCount', function( data ) {
-        iCount += parseInt(data);
+    $.get('http://swoid.dev/notifications/getOtherCount', function( data ) {
+        if( data > 0 ) {
+            $('.notifications button').addClass('hot');
+        } else {
+            $('.notifications button').removeClass('hot');
+        }
+        $('.notifications button').html(data);
     });
-
-    // Nombre de demandes d'amis
-    $.get('http://swoid.dev/notifications/getFriendCount', function( data ) {
-        iCount += parseInt(data);
-    });
-
-    if( iCount > 0 ) {
-        $('.notifications button').addClass('hot');
-    } else {
-        $('.notifications button').removeClass('hot');
-    }
-    $('.notifications button').html(iCount);
 }

@@ -31,14 +31,15 @@ class NotificationsController extends AppController
     public function getMessageCount()
     {
         $this->layout = 'empty';
-        $d['count'] = $this->Notification->getFirst(
+        $count = $this->Notification->getFirst(
             [
                 'fields' => 'COUNT(id) as count',
                 'where' => 'ref = "messages" AND notifications.target_id = ' . $_SESSION['id'] . ' AND notifications.seen = 0',
             ]
         );
+        $count = $count->count;
         $this->view = 'count';
-        $this->set($d);
+        $this->set('count',$count);
     }
 
     /**
@@ -60,35 +61,28 @@ class NotificationsController extends AppController
     }
 
     /**
-     * Récupère le nombre de commentaires non lus
+     * Récupère le nombre de commentaires et demande d'amis non lus
      */
-    public function getCommentCount()
+    public function getOtherCount()
     {
         $this->layout = 'empty';
-        $d['count'] = $this->Notification->getFirst(
+
+        $comments_count = $this->Notification->getFirst(
             [
                 'fields' => 'COUNT(id) as count',
                 'where' => 'ref = "comments" AND notifications.target_id = ' . $_SESSION['id'] . ' AND notifications.seen = 0',
             ]
         );
-        $this->view = 'count';
-        $this->set($d);
-    }
-
-    /**
-     * Récupère le nombre de demande d'ajout non lues
-     */
-    public function getFriendCount()
-    {
-        $this->layout = 'empty';
-        $d['count'] = $this->Notification->getFirst(
+        $friends_count = $this->Notification->getFirst(
             [
                 'fields' => 'COUNT(id) as count',
                 'where' => 'ref = "friends" AND notifications.target_id = ' . $_SESSION['id'] . ' AND notifications.seen = 0',
             ]
         );
+
+        $count = $comments_count->count + $friends_count->count;
         $this->view = 'count';
-        $this->set($d);
+        $this->set('count', $count);
     }
 
 } 
