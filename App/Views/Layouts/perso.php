@@ -25,28 +25,14 @@
                 </div>
             </div>
             <div class="right">
-                <div class="messages test">
-                    <button class="hot popup-button">3</button>
+                <div class="messages">
+                    <button class="popup-button"></button>
                     <ul class="popup">
-                        <li>
-                            <img src="./img/avatar.png">
-                            <span>Message bidon</span>
-                            <span class="time">16:32</span>
-                        </li>
-                        <li>
-                            <img src="./img/avatar.png">
-                            <span>Message bidon</span>
-                            <span class="time">16:32</span>
-                        </li>
-                        <li>
-                            <img src="./img/avatar.png">
-                            <span>Message bidon</span>
-                            <span class="time">16:32</span>
-                        </li>
+
                     </ul>
                 </div>
                 <div class="notifications">
-                    <button class="hot popup-button">3</button>
+                    <button class="popup-button">3</button>
                     <ul class="popup">
                         <li>
                             <img src="./img/avatar.png">
