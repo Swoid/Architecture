@@ -7,7 +7,7 @@
 #
 # Hôte: 127.0.0.1 (MySQL 5.6.21)
 # Base de données: swoid
-# Temps de génération: 2015-05-03 08:23:36 +0000
+# Temps de génération: 2015-05-04 12:50:01 +0000
 # ************************************************************
 
 
@@ -59,81 +59,53 @@ CREATE TABLE `messages` (
   `target_id` int(11) NOT NULL,
   `text` text NOT NULL,
   `date` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  `seen` int(11) DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `author_id` (`author_id`,`target_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+LOCK TABLES `messages` WRITE;
+/*!40000 ALTER TABLE `messages` DISABLE KEYS */;
+
+INSERT INTO `messages` (`id`, `author_id`, `target_id`, `text`, `date`)
+VALUES
+	(1,2,1,'Void envoie à Swith 1','2015-05-03 13:28:24'),
+	(2,1,2,'Swith répond à void 2','2015-05-03 13:28:33'),
+	(3,1,2,'Swith répond à void 3','2015-05-03 13:28:45'),
+	(4,1,2,'Trop cool ça marche !','2015-05-04 14:22:54');
+
+/*!40000 ALTER TABLE `messages` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
-# Affichage de la table notifications_comments
+# Affichage de la table notifications
 # ------------------------------------------------------------
 
-DROP TABLE IF EXISTS `notifications_comments`;
+DROP TABLE IF EXISTS `notifications`;
 
-CREATE TABLE `notifications_comments` (
+CREATE TABLE `notifications` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `author_id` int(11) NOT NULL,
-  `post_id` int(11) NOT NULL,
-  `text` text,
-  `date` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`),
-  KEY `author_id` (`author_id`,`post_id`)
+  `ref` varchar(255) NOT NULL DEFAULT '',
+  `ref_id` int(11) NOT NULL,
+  `author_id` int(11) DEFAULT NULL,
+  `target_id` int(11) DEFAULT NULL,
+  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `seen` tinyint(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+LOCK TABLES `notifications` WRITE;
+/*!40000 ALTER TABLE `notifications` DISABLE KEYS */;
 
+INSERT INTO `notifications` (`id`, `ref`, `ref_id`, `author_id`, `target_id`, `date`, `seen`)
+VALUES
+	(3,'messages',1,2,1,'2015-05-04 12:59:57',0),
+	(4,'messages',2,1,2,'2015-05-04 13:15:21',0),
+	(5,'messages',3,1,2,'2015-05-04 13:15:58',0),
+	(6,'comments',2,3,1,'2015-05-04 14:14:25',0),
+	(7,'comments',3,1,3,'2015-05-04 14:16:09',0);
 
-# Affichage de la table notifications_friends
-# ------------------------------------------------------------
-
-DROP TABLE IF EXISTS `notifications_friends`;
-
-CREATE TABLE `notifications_friends` (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `author_id` int(11) NOT NULL,
-  `target_id` int(11) NOT NULL,
-  `date` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  `seen` int(1) DEFAULT '0',
-  PRIMARY KEY (`id`),
-  KEY `author_id` (`author_id`,`target_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-
-
-# Affichage de la table notifications_messages
-# ------------------------------------------------------------
-
-DROP TABLE IF EXISTS `notifications_messages`;
-
-CREATE TABLE `notifications_messages` (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `author_id` int(11) NOT NULL,
-  `target_id` int(11) NOT NULL,
-  `date` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  `message_id` int(11) NOT NULL,
-  `seen` int(1) DEFAULT '0',
-  PRIMARY KEY (`id`),
-  KEY `author_id` (`author_id`,`target_id`,`message_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-
-
-# Affichage de la table notifications_posts
-# ------------------------------------------------------------
-
-DROP TABLE IF EXISTS `notifications_posts`;
-
-CREATE TABLE `notifications_posts` (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `post_id` int(11) NOT NULL,
-  `author_id` int(11) NOT NULL,
-  `date` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  `target_id` int(11) NOT NULL,
-  `seen` tinyint(1) DEFAULT '0',
-  PRIMARY KEY (`id`),
-  KEY `post_id` (`post_id`,`author_id`,`target_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
+/*!40000 ALTER TABLE `notifications` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 # Affichage de la table posts
@@ -162,7 +134,21 @@ VALUES
 	(2,'1','2','2015-04-27 09:17:55','Ce réseau social est mortel !',NULL,0),
 	(3,'2','1','2015-04-27 09:18:16','On se fait un BBQ ? ',NULL,1),
 	(4,'1','3','2015-04-27 09:18:37','J\'ai mal à la tête, que dois-je faire ??',NULL,2),
-	(5,'2','2','2015-04-29 21:07:01','Un statut pour moi',NULL,0);
+	(5,'2','2','2015-04-29 21:07:01','Un statut pour moi',NULL,0),
+	(7,'2','2','2015-05-03 11:05:22','Trop coool',NULL,0),
+	(20,'1','1','2015-05-03 17:31:36','Un statut à moi, comment c\'est beau ce site',NULL,0),
+	(25,'1','1','2015-05-04 10:21:07','coucou',NULL,0),
+	(26,'1','1','2015-05-04 10:23:33','coucou',NULL,0),
+	(27,'1','1','2015-05-04 10:25:15','qzdqzdqzd',NULL,0),
+	(28,'1','1','2015-05-04 10:25:33','qzdqzdqzd',NULL,0),
+	(29,'1','1','2015-05-04 10:26:31','kkk',NULL,0),
+	(30,'1','1','2015-05-04 10:26:44','kkk',NULL,0),
+	(31,'1','1','2015-05-04 10:26:48','kkk',NULL,0),
+	(32,'1','1','2015-05-04 10:27:28','qzdqzdqzd',NULL,0),
+	(33,'1','1','2015-05-04 10:28:10','qzdqzdqzdqzdqzd',NULL,0),
+	(34,'1','1','2015-05-04 10:28:38','idoqizdjoziqjdoiqzjdoiqzjdoiqzjdojzqoidjoqzijdo izqjdoqiz jdoiqzjdoiqzj',NULL,0),
+	(35,'1','1','2015-05-04 10:28:47','dozqjdoiqzjdo zqijd oizjq doizqj doiqzj dijq',NULL,0),
+	(36,'1','1','2015-05-04 10:29:40','bonjour',NULL,0);
 
 /*!40000 ALTER TABLE `posts` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -219,8 +205,8 @@ LOCK TABLES `users` WRITE;
 
 INSERT INTO `users` (`id`, `username`, `firstname`, `lastname`, `tagline`, `avatar`, `password`, `post_count`, `friend_count`, `date_enregistrement`)
 VALUES
-	(1,'Swith','Jeremy','Smith','Debuggeur compulsif','swith','a94a8fe5ccb19ba61c4c0873d391e987982fbbd3',4,2,'2015-04-27 09:11:13'),
-	(2,'Void','Adrien','Leloup','Grilladeur compulsif','void','a94a8fe5ccb19ba61c4c0873d391e987982fbbd3',2,1,'2015-04-27 09:11:13'),
+	(1,'Swith','Jeremy','Smith','Debuggeur compulsif','swith','a94a8fe5ccb19ba61c4c0873d391e987982fbbd3',21,2,'2015-04-27 09:11:13'),
+	(2,'Void','Adrien','Leloup','Grilladeur compulsif','void','a94a8fe5ccb19ba61c4c0873d391e987982fbbd3',3,1,'2015-04-27 09:11:13'),
 	(3,'DrHouse','Hugh','Laurie','Medecin fou','drhouse','a94a8fe5ccb19ba61c4c0873d391e987982fbbd3',0,1,'2015-04-27 09:11:13');
 
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
