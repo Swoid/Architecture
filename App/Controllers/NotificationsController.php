@@ -40,4 +40,37 @@ class NotificationsController extends AppController
         $this->set($d);
     }
 
+    /**
+     * Récupère les notifications de commentaire
+     */
+    public function getComments()
+    {
+        $this->layout = 'empty';
+        $d['notifs'] = $this->Notification->get(
+            [
+                'fields'=> 'comments.post_id, avatar, text, comments.date',
+                'joins' => ['users','comments'],
+                'where' => "ref = 'comments' AND notifications.target_id = " . $_SESSION['id'] . " AND notifications.seen = 0",
+                'limit' => 5
+            ]
+        );
+
+        $this->set($d);
+    }
+
+    /**
+     * Récupère le nombre de commentaires non lus
+     */
+    public function getCommentCount()
+    {
+        $this->layout = 'empty';
+        $d['count'] = $this->Notification->getFirst(
+            [
+                'fields' => 'COUNT(id) as count',
+                'where' => 'ref = "comments" AND notifications.target_id = ' . $_SESSION['id'] . ' AND notifications.seen = 0',
+            ]
+        );
+        $this->set($d);
+    }
+
 } 
