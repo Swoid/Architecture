@@ -73,6 +73,7 @@ class NotificationsController extends AppController
                 'where' => 'ref = "comments" AND notifications.target_id = ' . $_SESSION['id'] . ' AND notifications.seen = 0',
             ]
         );
+
         $friends_count = $this->Notification->getFirst(
             [
                 'fields' => 'COUNT(id) as count',
@@ -80,7 +81,14 @@ class NotificationsController extends AppController
             ]
         );
 
-        $count = $comments_count->count + $friends_count->count;
+        $posts_count = $this->Notification->getFirst(
+            [
+                'fields' => 'COUNT(id) as count',
+                'where' => 'ref = "posts" AND notifications.target_id = ' . $_SESSION['id'] . ' AND notifications.seen = 0',
+            ]
+        );
+
+        $count = $comments_count->count + $friends_count->count + $posts_count->count;
         $this->view = 'count';
         $this->set('count', $count);
     }
