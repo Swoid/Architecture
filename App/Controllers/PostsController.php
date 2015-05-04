@@ -26,7 +26,7 @@ class PostsController extends AppController
             $post->comments = $this->Comment->get(
                 [
                     'where' => 'post_id = ' . $post->p_id,
-                    'order' => 'comments.id DESC',
+                    'order' => 'comments.id ASC',
                     'joins' => ['users']
                 ]
             );
