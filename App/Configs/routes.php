@@ -23,5 +23,6 @@ return [
     'notifications/getMessageCount',
     'notifications/getMessages',
     'notifications/getCommentCount',
+    'notifications/getFriendCount',
     'notifications/getComments',
 ];
