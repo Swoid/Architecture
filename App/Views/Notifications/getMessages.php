@@ -7,7 +7,7 @@
     <?php foreach($notifs as $notif): ?>
         <li>
             <a href="<?= Html::href('messages/conversation/' . $notif->author_id); ?>">
-                <?= Html::img($notif->avatar); ?>
+                <?= Html::img($notif->avatar . '-s.png'); ?>
                 <span><?= $notif->text; ?></span>
                 <span class="time">16:32</span>
             </a>
