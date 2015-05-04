@@ -18,8 +18,8 @@
                 <div class="popup">
                     <form>
                         <div>
-                            <input type="search">
-                            <input type="submit">
+                            <input type="text" placeholder="Rechercher...">
+                            <input type="submit" value="Go">
                         </div>
                     </form>
                 </div>
