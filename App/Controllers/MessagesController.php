@@ -22,6 +22,8 @@ class MessagesController extends AppController
         $this->loadModel('User');
         $d['target'] = $this->User->getFirst(['where' => 'id=' . $friend_id]);
         $d['me'] = $this->User->getFirst(['where' => 'id=' . $_SESSION['id']]);
+        $this->loadModel('Notification');
+        $this->Notification->markMessagesAsRead($friend_id, $_SESSION['id']);
         $d['messages'] = $this->Message->get([
             'where'=> " (author_id = $friend_id  AND target_id = {$_SESSION['id']}) || (author_id = {$_SESSION['id']}  AND target_id = $friend_id)",
             "joins" => ['users'],
