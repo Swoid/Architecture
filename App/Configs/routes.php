@@ -23,7 +23,7 @@ return [
     'notifications/getMessageCount',
     'notifications/getMessages',
     'notifications/getOtherCount',
-    'notifications/getComments',
+    'notifications/getNotifications',
 
     // Commentaires
     'comments/comment',
