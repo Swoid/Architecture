@@ -1,4 +1,6 @@
 <?php use Core\Helpers\Html; ?>
+<?php use Core\Helpers\Date; ?>
+
 <main id="main">
     <div class="container">
         <div id="left">
@@ -10,7 +12,7 @@
                         <?php if(isset($oPost->target)): ?>
                             <span><?= $oPost->target->firstname . ' ' . $oPost->target->lastname; ?></span>
                         <?php endif; ?>
-                        <p class="date"<?= $oPost->date; ?></p>
+                        <p class="date"><?= Date::dateToFr($oPost->date); ?></p>
                     </div>
                     <p class="main">
                         <?= $oPost->text; ?>
@@ -19,21 +21,13 @@
                         <button class="popup-button"><?= $oPost->comment_count; ?> commentaires</button>
                         <div class="popup">
                             <ul>
-                                <li>
-                                    <img src="./img/avatar.png">
-                                    <span>Message bidon</span>
-                                    <span class="time">16:32</span>
-                                </li>
-                                <li>
-                                    <img src="./img/avatar.png">
-                                    <span>Message bidon</span>
-                                    <span class="time">16:32</span>
-                                </li>
-                                <li>
-                                    <img src="./img/avatar.png">
-                                    <span>Message bidon</span>
-                                    <span class="time">16:32</span>
-                                </li>
+                                <?php foreach($oPost->comments as $comment): ?>
+                                    <li>
+                                        <img src="<?= ASSETS . 'img/' . $comment->avatar. '-s.png'; ?>" alt=""/>
+                                        <span><?= $comment->text; ?></span>
+                                        <span class="time"><?= date('H:i', strtotime($comment->date)); ?></span>
+                                    </li>
+                                <?php endforeach; ?>
                             </ul>
                             <form>
                                 <input type="text">
@@ -71,7 +65,7 @@
                         <?= Html::img($rPost->avatar . '-m.png'); ?>
                         <span class="first"><?= $rPost->firstname . ' ' . $rPost->lastname; ?></span>
                         <span><?= $user->firstname . ' ' . $user->lastname; ?></span>
-                        <p class="date"><?= $rPost->date; ?></p>
+                        <p class="date"><?= Date::dateToFr($rPost->date); ?></p>
                     </div>
                     <p class="main">
                         <?= $rPost->text; ?>
@@ -80,21 +74,13 @@
                         <button class="popup-button"><?= $rPost->comment_count; ?> commentaires</button>
                         <div class="popup">
                             <ul>
-                                <li>
-                                    <img src="./img/avatar.png">
-                                    <span>Message bidon</span>
-                                    <span class="time">16:32</span>
-                                </li>
-                                <li>
-                                    <img src="./img/avatar.png">
-                                    <span>Message bidon</span>
-                                    <span class="time">16:32</span>
-                                </li>
-                                <li>
-                                    <img src="./img/avatar.png">
-                                    <span>Message bidon</span>
-                                    <span class="time">16:32</span>
-                                </li>
+                                <?php foreach($rPost->comments as $comment): ?>
+                                    <li>
+                                        <img src="<?= ASSETS . 'img/' . $comment->avatar. '-s.png'; ?>" alt=""/>
+                                        <span><?= $comment->text; ?></span>
+                                        <span class="time"><?= date('H:i', strtotime($comment->date)); ?></span>
+                                    </li>
+                                <?php endforeach; ?>
                             </ul>
                             <form>
                                 <input type="text">
