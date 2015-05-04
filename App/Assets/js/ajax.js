@@ -40,12 +40,7 @@ $('document').ready( function() {
  */
 function checkMessagesNotif() {
     $.get('http://swoid.dev/notifications/getMessageCount', function( data ) {
-        if( data > 0 ) {
-            $('.messages button').addClass('hot');
-        } else {
-            $('.messages button').removeClass('hot');
-        }
-        $('.messages button').html(data);
+        appendTo('messages', data);
     });
 }
 
@@ -55,11 +50,20 @@ function checkMessagesNotif() {
 function checkOtherNotif() {
     // Nombre de commentaires
     $.get('http://swoid.dev/notifications/getOtherCount', function( data ) {
-        if( data > 0 ) {
-            $('.notifications button').addClass('hot');
-        } else {
-            $('.notifications button').removeClass('hot');
-        }
-        $('.notifications button').html(data);
+        appendTo('notifications', data);
     });
+}
+
+/**
+ * On ajoute les données à un elements
+ * @param element
+ * @param data
+ */
+function appendTo(element, data) {
+    if( data > 0 ) {
+        $('.'+ element +' button').addClass('hot');
+    } else {
+        $('.'+ element +' button').removeClass('hot');
+    }
+    $('.'+ element +' button').html(data);
 }
