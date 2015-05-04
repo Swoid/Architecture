@@ -31,8 +31,8 @@
                                 <?php endforeach; ?>
                             </li>
                         </ul>
-                        <form>
-                            <input type="text">
+                        <form action="<?= Html::href('comments/comment/' . $post->p_id . '/' . $post->target_id); ?>" method="post">
+                            <input type="text" name="text">
                             <input type="submit">
                         </form>
                     </div>
@@ -71,8 +71,8 @@
                                 <?php endforeach; ?>
                             </li>
                         </ul>
-                        <form>
-                            <input type="text">
+                        <form action="<?= Html::href('comments/comment/' . $post->p_id . '/' . $post->target_id); ?>" method="post">
+                            <input type="text" name="text">
                             <input type="submit">
                         </form>
                     </div>
