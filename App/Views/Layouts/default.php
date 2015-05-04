@@ -1,5 +1,5 @@
-<?php use Core\Helpers\Html; use Core\Session; ?>
-    <!DOCTYPE html>
+<?php use Core\Helpers\Html; ?>
+<!DOCTYPE html>
 <html>
     <head>
         <title></title>
@@ -26,27 +26,13 @@
             </div>
             <div class="right">
                 <div class="messages">
-                    <button class="hot popup-button">3</button>
+                    <button class="popup-button">3</button>
                     <ul class="popup">
-                        <li>
-                            <?= Html::img('avatar.png'); ?>
-                            <span>Message bidon</span>
-                            <span class="time">16:32</span>
-                        </li>
-                        <li>
-                            <?= Html::img('avatar.png'); ?>
-                            <span>Message bidon</span>
-                            <span class="time">16:32</span>
-                        </li>
-                        <li>
-                            <?= Html::img('avatar.png'); ?>
-                            <span>Message bidon</span>
-                            <span class="time">16:32</span>
-                        </li>
+
                     </ul>
                 </div>
                 <div class="notifications">
-                    <button class="hot popup-button">3</button>
+                    <button class="popup-button">3</button>
                     <ul class="popup">
                         <li>
                             <?= Html::img('avatar.png'); ?>
