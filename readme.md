@@ -1,9 +1,15 @@
 #TODO 
 - CSS
     - Page liste contacts
+    - page recherche de contact
     - Delete posts, comments ...
     - Color in input text
     - Alerts
+    - formlaire des commentaires
 - PHP
     - Ajout des commentaires
+    - System d'image
+    - Edition de profil
+    - recherche de contact
     - Ajout de contact
+    - fetch class 
