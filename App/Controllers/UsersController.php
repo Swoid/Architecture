@@ -90,7 +90,7 @@ class UsersController extends AppController
             $oPost->comments = $this->Comment->get(
                 [
                     'where' => 'post_id = ' . $oPost->p_id,
-                    'order' => 'comments.id DESC',
+                    'order' => 'comments.id ASC',
                     'joins' => ['users']
                 ]
             );
@@ -118,7 +118,7 @@ class UsersController extends AppController
                 [
                     'fields'=> 'avatar, comments.text, comments.date',
                     'where' => 'post_id = ' . $rPost->p_id,
-                    'order' => 'comments.id DESC',
+                    'order' => 'comments.id ASC',
                     'joins' => ['users']
                 ]
             );
