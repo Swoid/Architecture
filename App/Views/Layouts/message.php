@@ -26,43 +26,15 @@
             </div>
             <div class="right">
                 <div class="messages">
-                    <button class="hot popup-button">3</button>
+                    <button class="popup-button"></button>
                     <ul class="popup">
-                        <li>
-                            <?= Html::img('avatar.png'); ?>
-                            <span>Message bidon</span>
-                            <span class="time">16:32</span>
-                        </li>
-                        <li>
-                            <?= Html::img('avatar.png'); ?>
-                            <span>Message bidon</span>
-                            <span class="time">16:32</span>
-                        </li>
-                        <li>
-                            <?= Html::img('avatar.png'); ?>
-                            <span>Message bidon</span>
-                            <span class="time">16:32</span>
-                        </li>
+
                     </ul>
                 </div>
                 <div class="notifications">
-                    <button class="hot popup-button">3</button>
+                    <button class="hot popup-button"></button>
                     <ul class="popup">
-                        <li>
-                            <?= Html::img('avatar.png'); ?>
-                            <span>Notification bidon</span>
-                            <span class="time">16:32</span>
-                        </li>
-                        <li>
-                            <?= Html::img('avatar.png'); ?>
-                            <span>Notification bidon</span>
-                            <span class="time">16:32</span>
-                        </li>
-                        <li>
-                            <?= Html::img('avatar.png'); ?>
-                            <span>Notification bidon</span>
-                            <span class="time">16:32</span>
-                        </li>
+
                     </ul>
                 </div>
                 <a href="<?= Html::href('users/index/' . $_SESSION['id']); ?>"

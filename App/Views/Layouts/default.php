@@ -26,7 +26,7 @@
             </div>
             <div class="right">
                 <div class="messages">
-                    <button class="popup-button">3</button>
+                    <button class="popup-button"></button>
                     <ul class="popup">
 
                     </ul>
