@@ -37,6 +37,7 @@ class NotificationsController extends AppController
                 'where' => 'ref = "messages" AND notifications.target_id = ' . $_SESSION['id'] . ' AND notifications.seen = 0',
             ]
         );
+        $this->view = 'count';
         $this->set($d);
     }
 
@@ -70,6 +71,23 @@ class NotificationsController extends AppController
                 'where' => 'ref = "comments" AND notifications.target_id = ' . $_SESSION['id'] . ' AND notifications.seen = 0',
             ]
         );
+        $this->view = 'count';
+        $this->set($d);
+    }
+
+    /**
+     * Récupère le nombre de demande d'ajout non lues
+     */
+    public function getFriendCount()
+    {
+        $this->layout = 'empty';
+        $d['count'] = $this->Notification->getFirst(
+            [
+                'fields' => 'COUNT(id) as count',
+                'where' => 'ref = "friends" AND notifications.target_id = ' . $_SESSION['id'] . ' AND notifications.seen = 0',
+            ]
+        );
+        $this->view = 'count';
         $this->set($d);
     }
 
