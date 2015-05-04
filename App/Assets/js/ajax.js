@@ -19,7 +19,7 @@ $('document').ready( function() {
      * Recupère les notifications de type comments
      */
     function getNotifications() {
-        $.get('http://swoid.dev/notifications/getComments', function( data ) {
+        $.get('http://swoid.dev/notifications/getNotifications', function( data ) {
             $('.notifications .popup').html(data);
         });
     }
