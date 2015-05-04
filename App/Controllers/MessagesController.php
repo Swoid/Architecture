@@ -25,7 +25,8 @@ class MessagesController extends AppController
         $this->loadModel('Notification');
         $this->Notification->markMessagesAsRead($friend_id, $_SESSION['id']);
         $d['messages'] = $this->Message->get([
-            'where'=> " (author_id = $friend_id  AND target_id = {$_SESSION['id']}) || (author_id = {$_SESSION['id']}  AND target_id = $friend_id)",
+            'fields'=> 'author_id, target_id, messages.date, text, avatar',
+            'where' => " (author_id = $friend_id  AND target_id = {$_SESSION['id']}) || (author_id = {$_SESSION['id']}  AND target_id = $friend_id)",
             "joins" => ['users'],
             "order" => 'date ASC'
         ]);
@@ -43,14 +44,16 @@ class MessagesController extends AppController
             $this->redirect('users/index');
         }
 
-        if( $this->Request->isPost) {
-            if($this->Message->validate($this->Request->data)) {
+        if ($this->Request->isPost) {
+            if ($this->Message->validate($this->Request->data)) {
                 $this->Request->data->target_id = $target_id;
                 $this->Request->data->author_id = $_SESSION['id'];
                 $this->Message->create($this->Request->data);
+                $this->loadModel('Notification');
+                $this->Notification->send('messages', $this->Message->lastInsertId, $_SESSION['id'], $target_id);
                 $this->redirect('messages/conversation/' . $target_id);
             } else {
-                $this->Session->setFlash($this->Message->getErrors(),'error');
+                $this->Session->setFlash($this->Message->getErrors(), 'error');
                 $this->redirect('messages/conversation/' . $target_id);
             }
         } else {
