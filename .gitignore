@@ -9,10 +9,4 @@ config.codekit
 config.rb
 *.sassc
 
-*.sassc
-
-*.sassc
-
-App/Assets/css/main.css
-
-App/Assets/js/min/ajax-min.js
+*.css
