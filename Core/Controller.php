@@ -73,9 +73,14 @@ class Controller
 
     }
 
-    public function redirect($url = ''){
-        header('Location: ' . ROOT . $url);
-        exit();
+    public function redirect($url = '', $complete = false){
+        if($complete){
+            header('Location: ' . $url);
+            exit();
+        }else {
+            header('Location: ' . ROOT . $url);
+            exit();
+        }
     }
 
     /**
