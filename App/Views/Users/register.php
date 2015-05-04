@@ -9,8 +9,8 @@
                 <input type="text" id="login" name="username" placeholder="Entrez votre nom d'utilisateur ...">
                 <label for="firstname">Prénom</label>
                 <input type="text" id="firstname" name="firstname" placeholder="Entrez votre prénom ...">
-                <label for="firstname">Nom</label>
-                <input type="text" id="firstname" name="firstname" placeholder="Entrez votre nom ...">
+                <label for="lastname">Nom</label>
+                <input type="text" id="lastname" name="lastname" placeholder="Entrez votre nom ...">
                 <label for="password">Mot de passe</label>
                 <input type="password" id="password" name="password" placeholder="Entrez votre mot de passe ...">
                 <input class="submit-button" type="submit" value="S'inscire">
