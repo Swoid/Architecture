@@ -1,15 +1,10 @@
 ( function(){
 
 	var aPopupButtons = document.querySelectorAll( ".popup-button" );
-    var bOpened = false;
 	var i = 0, element;
 	for( ; element = aPopupButtons[ i++ ] ; ){
 		element.addEventListener( "click", togglePopup, false );
 	}
-
-    if(bOpened) {
-	    document.addEventListener( "click", checkParent, false );
-    }
 
 	function checkParent(event){
 		var hasParent = false;
@@ -23,11 +18,12 @@
 	  if(!hasParent){
 	    var popup = document.querySelector( ".show" );
 		popup.className = "popup";
+		  document.removeEventListener("click", checkParent);
 	  }
 	}
 
 	function togglePopup(evt){
-        bOpened = true;
+		document.addEventListener( "click", checkParent, false );
 		var oPopup = evt.target.nextElementSibling;
 		oPopup.classList.toggle( "show" );
 	}
