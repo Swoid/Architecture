@@ -29,7 +29,7 @@ class Model
         if (is_null($this->db))
             $this->db = DbProvider::getDb();
         
-        $this->table = str_replace('App\\Models\\', '', get_class($this)) . 's';
+        $this->table = strtolower(str_replace('App\\Models\\', '', get_class($this)) . 's');
     }
 
     /**
@@ -70,7 +70,7 @@ class Model
                     $joins[] = " JOIN $j ON $j.{$this->primaryKey} = {$this->table}." . $this->joins[$j];
                 }
             }
-            $query .= implode(" AND ", $joins);
+            $query .= implode(" ", $joins);
         }
 
         // Si on a un Where
@@ -109,7 +109,6 @@ class Model
             $query .= " ORDER BY " . $conditions['order'];
         }
 
-        // debug($query);
         $req = $this->db->query($query);
 
         return $req->fetchAll();
