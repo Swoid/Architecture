@@ -26,7 +26,7 @@ class PostsController extends AppController
             $post->comments = $this->Comment->get(
                 [
                     'where' => 'post_id = ' . $post->p_id,
-                    'order' => 'date DESC',
+                    'order' => 'comments.id DESC',
                     'joins' => ['users']
                 ]
             );
@@ -89,12 +89,13 @@ class PostsController extends AppController
                 $this->loadModel('User');
                 $this->User->updatePostCount($_SESSION['id']);
                 $this->Session->setFlash('Le message a bien été publié');
-                $this->redirect('users/index/' . $target_id);
+                $this->redirect($_SERVER['HTTP_REFERER'], true);
             } else {
                 $this->Session->setFlash($this->Post->getErrors(), 'error');
-                $this->redirect('users/index/' . $target_id);
+                $this->redirect($_SERVER['HTTP_REFERER'], true);
             }
         }
 
     }
+
 }
