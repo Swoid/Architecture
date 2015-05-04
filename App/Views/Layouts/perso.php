@@ -32,23 +32,9 @@
                     </ul>
                 </div>
                 <div class="notifications">
-                    <button class="popup-button">3</button>
+                    <button class="popup-button"></button>
                     <ul class="popup">
-                        <li>
-                            <img src="./img/avatar.png">
-                            <span>Adrien Leloup a commenté votre statut</span>
-                            <span class="time">16:32</span>
-                        </li>
-                        <li>
-                            <img src="./img/avatar.png">
-                            <span>Philip J. Fry a commenté votre statut</span>
-                            <span class="time">16:32</span>
-                        </li>
-                        <li>
-                            <img src="./img/avatar.png">
-                            <span>Adrien Leloup vous a ajouté aux contacts</span>
-                            <span class="time">16:32</span>
-                        </li>
+
                     </ul>
                 </div>
                 <a href="<?= Html::href('users/index/' . $_SESSION['id']); ?>"
