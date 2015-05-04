@@ -15,7 +15,7 @@ class NotificationsController extends AppController
         $this->layout = 'empty';
         $d['notifs'] = $this->Notification->get(
             [
-                'fields'=> 'messages.author_id, avatar, text',
+                'fields'=> 'messages.author_id, avatar, text, messages.date',
                 'joins' => ['users','messages'],
                 'where' => "ref = 'messages' AND notifications.target_id = " . $_SESSION['id'] . " AND notifications.seen = 0",
                 'limit' => 5
