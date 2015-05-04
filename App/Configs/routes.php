@@ -22,7 +22,6 @@ return [
     // Notifications
     'notifications/getMessageCount',
     'notifications/getMessages',
-    'notifications/getCommentCount',
-    'notifications/getFriendCount',
+    'notifications/getOtherCount',
     'notifications/getComments',
 ];
