@@ -88,6 +88,11 @@ class PostsController extends AppController
                 $this->Post->create($this->Request->data);
                 $this->loadModel('User');
                 $this->User->updatePostCount($_SESSION['id']);
+                if($this->Request->data->target_id != $_SESSION['id'] || $this->Request->data->author_id != $_SESSION['id']) {
+                    $this->loadModel('Notification');
+                    $notif_target = $this->Request->data->target_id == $_SESSION['id'] ? $this->Request->data->author_id : $this->Request->data->target_id;
+                    $this->Notification->send('posts', $this->Post->lastInsertId, $_SESSION['id'], $notif_target);
+                }
                 $this->Session->setFlash('Le message a bien été publié');
                 $this->redirect($_SERVER['HTTP_REFERER'], true);
             } else {
