@@ -45,14 +45,30 @@ class NotificationsController extends AppController
     /**
      * Récupère les notifications de commentaire
      */
-    public function getComments()
+    public function getNotifications()
     {
         $this->layout = 'empty';
-        $d['notifs'] = $this->Notification->get(
+        $d['comments'] = $this->Notification->get(
             [
-                'fields'=> 'comments.post_id, avatar, text, comments.date',
+                'fields'=> 'post_id, avatar, text, comments.date',
                 'joins' => ['users','comments'],
                 'where' => "ref = 'comments' AND notifications.target_id = " . $_SESSION['id'] . " AND notifications.seen = 0",
+                'limit' => 5
+            ]
+        );
+        $d['posts'] = $this->Notification->get(
+            [
+                'fields'=> 'posts.id, avatar, text, posts.date',
+                'joins' => ['users','posts'],
+                'where' => "ref = 'posts' AND notifications.target_id = " . $_SESSION['id'] . " AND notifications.seen = 0",
+                'limit' => 5
+            ]
+        );
+        $d['friends'] = $this->Notification->get(
+            [
+                'fields'=> 'users.id, avatar, firstname, lastname, notifications.date',
+                'joins' => ['users'],
+                'where' => "ref = 'friends' AND notifications.target_id = " . $_SESSION['id'] . " AND notifications.seen = 0",
                 'limit' => 5
             ]
         );
