@@ -25,7 +25,7 @@
                 </div>
             </div>
             <div class="right">
-                <div class="messages">
+                <div class="messages test">
                     <button class="hot popup-button">3</button>
                     <ul class="popup">
                         <li>
@@ -95,5 +95,6 @@
         </div>
     </div>
 </div>
+<?= $this->Session->flash(); ?>
 <?= $layout_content; ?>
 <?= $this->element('footer'); ?>
