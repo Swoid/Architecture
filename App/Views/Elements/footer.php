@@ -25,5 +25,7 @@
 </div>
 <?= Html::script('form'); ?>
 <?= Html::script('popup'); ?>
+<?= Html::script('jquery'); ?>
+<?= Html::script('ajax'); ?>
 </body>
 </html>
