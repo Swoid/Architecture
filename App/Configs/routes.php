@@ -5,6 +5,7 @@ return [
     'posts/index', // Route par défaut !
     'posts/selfPublish',
     'posts/friendPublish',
+    'posts/view',
 
     // Users
     'users/connect',
@@ -21,4 +22,6 @@ return [
     // Notifications
     'notifications/getMessageCount',
     'notifications/getMessages',
+    'notifications/getCommentCount',
+    'notifications/getComments',
 ];
