@@ -9,7 +9,7 @@
             <a href="<?= Html::href('messages/conversation/' . $notif->author_id); ?>">
                 <?= Html::img($notif->avatar . '-s.png'); ?>
                 <span><?= $notif->text; ?></span>
-                <span class="time">16:32</span>
+                <span class="time"><?= date('H:i', strtotime($notif->date)); ?></span>
             </a>
         </li>
     <?php endforeach; ?>

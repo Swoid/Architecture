@@ -8,7 +8,7 @@
                 <?php else: ?>
                     <?= Html::img($me->avatar . '-m.png'); ?>
                 <?php endif; ?>
-                <span class="time"><?= $message->date; ?></span>
+                <span class="time"><?= date('H:i', strtotime($message->date)); ?></span>
             </div>
             <p class="main">
                <?= $message->text; ?>

@@ -1,4 +1,6 @@
 <?php use Core\Helpers\Html; ?>
+<?php use Core\Helpers\Date; ?>
+
 <div id="left">
     <?php foreach ($posts as $post): ?>
         <?php if ($post->i % 2 == 0): ?>
@@ -8,7 +10,7 @@
                     <span class="<?= isset($post->target) ? 'first' : ''; ?>"><?= $post->firstname . ' ' . $post->lastname; ?></span>
                     <span><?= isset($post->target) ? ' ' . $post->target->firstname . ' ' . $post->target->lastname : ''; ?></span>
 
-                    <p class="date"><?= $post->date; ?></p>
+                    <p class="date"><?= Date::dateToFr($post->date); ?></p>
                 </div>
                 <p class="main">
                     <?php if(!is_null($post->image)): ?>
@@ -25,7 +27,7 @@
                                 <?php foreach ($post->comments as $comment): ?>
                                     <img src="<?= ASSETS . 'img/' . $comment->avatar. '-m.png'; ?>" alt="" width="43"/>
                                     <span><?= $comment->text; ?></span>
-                                    <span class="time"><?= $comment->date; ?></span>
+                                    <span class="time"><?= Date::dateToFr($comment->date); ?></span>
                                 <?php endforeach; ?>
                             </li>
                         </ul>
@@ -48,7 +50,7 @@
                     <span class="<?= isset($post->target) ? 'first' : ''; ?>"><?= $post->firstname . ' ' . $post->lastname; ?></span>
                     <?= isset($post->target) ? '<span>' . $post->target->firstname . ' ' . $post->target->lastname . '</span>' : ''; ?>
 
-                    <p class="date"><?= $post->date; ?></p>
+                    <p class="date"><?= Date::dateToFr($post->date); ?></p>
                 </div>
                 <p class="main">
                     <?php if(!is_null($post->image)): ?>
@@ -65,7 +67,7 @@
                                 <?php foreach ($post->comments as $comment): ?>
                                     <img src="<?= ASSETS . 'img/' . $comment->avatar. '-m.png'; ?>" alt="" width="43"/>
                                     <span><?= $comment->text; ?></span>
-                                    <span class="time"><?= $comment->date; ?></span>
+                                    <span class="time"><?= Date::dateToFr($comment->date); ?></span>
                                 <?php endforeach; ?>
                             </li>
                         </ul>
