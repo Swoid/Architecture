@@ -7,11 +7,11 @@
 
             <div class="search search-secondary">
                 <button class="popup-button">Search</button>
-                <div class="popup">
+                <div class="popup top">
                     <form>
                         <div>
-                            <input type="search">
-                            <input type="submit">
+                            <input type="text" placeholder="Rechercher...">
+                            <input type="submit" value="Go">
                         </div>
                     </form>
                 </div>
