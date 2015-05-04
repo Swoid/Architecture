@@ -7,7 +7,6 @@
 	}
 
 	function expand(evt){
-		console.log(evt.target);
 		var oForm = evt.target.parentNode.parentNode;
 		oForm.className = "expandable expanded";
 	}
