@@ -108,7 +108,7 @@ class Model
         if (isset($conditions['order'])) {
             $query .= " ORDER BY " . $conditions['order'];
         }
-
+        
         $req = $this->db->query($query);
 
         return $req->fetchAll();
