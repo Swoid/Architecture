@@ -1,11 +1,13 @@
 $('document').ready( function() {
 
-    var oButton = document.querySelector('.messages');
+    var oMessages = document.querySelector('.messages');
+    var oNotifs = document.querySelector('.notifications');
 
-    oButton.addEventListener( 'click', getMessages, false );
+    oMessages.addEventListener( 'click', getMessages, false );
+    oNotifs.addEventListener( 'click', getNotifications, false );
 
     /**
-     * Recupère les notifications de type message
+     * Recupère les notifications de type messages
      */
     function getMessages() {
         $.get('http://swoid.dev/notifications/getMessages', function( data ) {
@@ -13,26 +15,50 @@ $('document').ready( function() {
         });
     }
 
-    checkNotif();
+    /**
+     * Recupère les notifications de type comments
+     */
+    function getNotifications() {
+        $.get('http://swoid.dev/notifications/getComments', function( data ) {
+            $('.notifications .popup').html(data);
+        });
+    }
+
+    checkMessagesNotif();
+    checkCommentsNotif();
 
     /**
      * Lance la fonction checkNotif toutes les 5 secondes
      */
-    setInterval('checkNotif()',5000);
+    setInterval('checkMessagesNotif()',5000);
+    setInterval('checkCommentsNotif()',5000);
 
 });
 
 /**
  * Verifie le nombre de notifications
  */
-function checkNotif() {
+function checkMessagesNotif() {
     $.get('http://swoid.dev/notifications/getMessageCount', function( data ) {
-        console.log(data > 0);
         if( data > 0 ) {
             $('.messages button').addClass('hot');
         } else {
             $('.messages button').removeClass('hot');
         }
         $('.messages button').html(data);
+    });
+}
+
+/**
+ * Verifie le nombre de commentaires
+ */
+function checkCommentsNotif() {
+    $.get('http://swoid.dev/notifications/getCommentCount', function( data ) {
+        if( data > 0 ) {
+            $('.notifications button').addClass('hot');
+        } else {
+            $('.notifications button').removeClass('hot');
+        }
+        $('.notifications button').html(data);
     });
 }
