@@ -1,4 +1,5 @@
 <?php
+date_default_timezone_set('Europe/Brussels');
 # Les constantes
 define('ROUTES', './App/Configs/routes.php');
 define('DS', DIRECTORY_SEPARATOR);
