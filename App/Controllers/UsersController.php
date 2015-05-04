@@ -39,6 +39,7 @@ class UsersController extends AppController
         if ($this->Request->isPost) {
             if ($this->User->validate($this->Request->data)) {
                 $this->Auth->register($this->Request->data);
+                $this->redirect('users/connect');
             } else {
                 $d['errors'] = $this->User->getErrors();
             }
