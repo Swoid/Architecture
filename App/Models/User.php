@@ -66,4 +66,4 @@ class User extends AppModel
         $sql = "UPDATE users SET post_count = post_count + 1 WHERE id = $user_id";
         $this->db->query($sql);
     }
-} 
+}
