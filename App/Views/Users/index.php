@@ -29,8 +29,8 @@
                                     </li>
                                 <?php endforeach; ?>
                             </ul>
-                            <form>
-                                <input type="text">
+                            <form action="<?= Html::href('comments/comment/' . $oPost->p_id); ?>" method="post">
+                                <input type="text" name="text">
                                 <input type="submit">
                             </form>
                         </div>
@@ -82,8 +82,8 @@
                                     </li>
                                 <?php endforeach; ?>
                             </ul>
-                            <form>
-                                <input type="text">
+                            <form action="<?= Html::href('comments/comment/' . $rPost->p_id); ?>" method="post">
+                                <input type="text" name="text">
                                 <input type="submit">
                             </form>
                         </div>
