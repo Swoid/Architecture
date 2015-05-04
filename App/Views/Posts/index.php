@@ -27,7 +27,7 @@
                                 <?php foreach ($post->comments as $comment): ?>
                                     <img src="<?= ASSETS . 'img/' . $comment->avatar. '-m.png'; ?>" alt="" width="43"/>
                                     <span><?= $comment->text; ?></span>
-                                    <span class="time"><?= Date::dateToFr($comment->date); ?></span>
+                                    <span class="time"><?= date('H:i', strtotime($comment->date)); ?></span>
                                 <?php endforeach; ?>
                             </li>
                         </ul>
@@ -67,7 +67,7 @@
                                 <?php foreach ($post->comments as $comment): ?>
                                     <img src="<?= ASSETS . 'img/' . $comment->avatar. '-m.png'; ?>" alt="" width="43"/>
                                     <span><?= $comment->text; ?></span>
-                                    <span class="time"><?= Date::dateToFr($comment->date); ?></span>
+                                    <span class="time"><?= date('H:i', strtotime($comment->date)); ?></span>
                                 <?php endforeach; ?>
                             </li>
                         </ul>
