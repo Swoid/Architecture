@@ -23,4 +23,18 @@ class Notification extends AppModel
         $sql = "UPDATE notifications SET seen = 1 WHERE author_id = $friend_id  AND target_id = $user_id";
         $this->db->query($sql);
     }
+
+
+    /**
+     * Envoyer une notification
+     * @param $ref
+     * @param $ref_id
+     * @param $author_id
+     * @param $target_id
+     */
+    public function send($ref, $ref_id, $author_id, $target_id)
+    {
+        $sql = "INSERT INTO notifications (ref, ref_id, author_id, target_id) VALUES ('$ref', $ref_id, $author_id, $target_id)";
+        $this->db->query($sql);
+    }
 }
