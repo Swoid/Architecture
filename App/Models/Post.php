@@ -40,4 +40,14 @@ class Post extends AppModel
         $pdost->execute([':user_id'=>$user_id]);
         return $pdost->fetchAll();
     }
+
+    /**
+     * Met à jour le nombre de commenaitre
+     * @param $post_id
+     */
+    public function updateCommentCount($post_id)
+    {
+        $sql = "UPDATE posts SET comment_count = comment_count + 1 WHERE id = $post_id";
+        $this->db->query($sql);
+    }
 } 
