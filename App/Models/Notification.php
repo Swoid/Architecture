@@ -10,7 +10,8 @@ class Notification extends AppModel
         'messages' => 'ref_id',
         'users'    => 'author_id',
         'comments' => 'ref_id',
-        'relations'=> 'author_id'
+        'relations'=> 'author_id',
+        'posts'    => 'ref_id'
     ];
 
     /**
