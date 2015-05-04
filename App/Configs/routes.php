@@ -17,4 +17,8 @@ return [
     // Messages
     'messages/conversation',
     'messages/send',
+
+    // Notifications
+    'notifications/getMessageCount',
+    'notifications/getMessages',
 ];
