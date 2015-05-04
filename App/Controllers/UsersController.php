@@ -20,10 +20,10 @@ class UsersController extends AppController
                 if ($this->Auth->login($this->Request->data)) {
                     $this->redirect('posts/index');
                 } else {
-                    $d['errors'] = $this->User->errors();
+                    $d['errors'] = $this->User->getErrors();
                 }
             } else {
-                $d['errors'] = $this->User->errors();
+                $d['errors'] = $this->User->getErrors();
             }
         }
         $this->set($d);
@@ -40,7 +40,7 @@ class UsersController extends AppController
             if ($this->User->validate($this->Request->data)) {
                 $this->Auth->register($this->Request->data);
             } else {
-                $d['errors'] = $this->User->errors();
+                $d['errors'] = $this->User->getErrors();
             }
         }
         $this->set($d);
@@ -133,7 +133,7 @@ class UsersController extends AppController
 
         if (!is_numeric($user_id)) {
             $this->Session->setFlash('Cet utilisateur n‘existe pas');
-            $this->redirect($this->Request->referer);
+            $this->redirect($_SERVER['HTTP_REFERER'], true);
         }
 
         $this->layout = 'perso';
