@@ -17,8 +17,8 @@
 	    }
 	  if(!hasParent){
 	    var popup = document.querySelector( ".show" );
-		popup.className = "popup";
-		  document.removeEventListener("click", checkParent);
+		popup.classList.toggle( "show" );
+	  	document.removeEventListener("click", checkParent);
 	  }
 	}
 
