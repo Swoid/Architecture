@@ -79,7 +79,8 @@ class UsersController extends AppController
         $d['ownPosts'] = $this->Post->get(
             [
                 'where' => 'author_id = ' . $id . ' AND target_id = ' . $id,
-                'joins' => ['users']
+                'joins' => ['users'],
+                'order' => 'posts.id DESC'
             ]
         );
         foreach ($d['ownPosts'] as $oPost) {

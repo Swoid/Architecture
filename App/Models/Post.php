@@ -35,7 +35,7 @@ class Post extends AppModel
                 LEFT JOIN users ON users.id = posts.author_id
                 LEFT JOIN relations ON user_id = users.id
                 WHERE friend_id = :user_id OR ( friend_id != :user_id AND user_id = :user_id )
-                ORDER BY date DESC';
+                ORDER BY posts.id DESC';
         $pdost = $this->db->prepare($sql);
         $pdost->execute([':user_id'=>$user_id]);
         return $pdost->fetchAll();
