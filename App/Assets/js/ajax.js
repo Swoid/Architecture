@@ -25,13 +25,13 @@ $('document').ready( function() {
     }
 
     checkMessagesNotif();
-    checkCommentsNotif();
+    checkOtherNotif();
 
     /**
      * Lance la fonction checkNotif toutes les 5 secondes
      */
     setInterval('checkMessagesNotif()',5000);
-    setInterval('checkCommentsNotif()',5000);
+    setInterval('checkOtherNotif()',5000);
 
 });
 
@@ -52,13 +52,22 @@ function checkMessagesNotif() {
 /**
  * Verifie le nombre de commentaires
  */
-function checkCommentsNotif() {
+function checkOtherNotif() {
+    var iCount = 0;
+    // Nombre de commentaires
     $.get('http://swoid.dev/notifications/getCommentCount', function( data ) {
-        if( data > 0 ) {
-            $('.notifications button').addClass('hot');
-        } else {
-            $('.notifications button').removeClass('hot');
-        }
-        $('.notifications button').html(data);
+        iCount += parseInt(data);
     });
+
+    // Nombre de demandes d'amis
+    $.get('http://swoid.dev/notifications/getFriendCount', function( data ) {
+        iCount += parseInt(data);
+    });
+
+    if( iCount > 0 ) {
+        $('.notifications button').addClass('hot');
+    } else {
+        $('.notifications button').removeClass('hot');
+    }
+    $('.notifications button').html(iCount);
 }
