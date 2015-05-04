@@ -78,12 +78,21 @@ class UsersController extends AppController
         $d['user'] = $this->User->getFirst(['where' => 'id=' . $id]);
         $d['ownPosts'] = $this->Post->get(
             [
+                'fields'=>'posts.id as p_id, text, avatar, firstname, lastname, comment_count, posts.date, author_id, target_id',
                 'where' => 'author_id = ' . $id . ' AND target_id = ' . $id,
                 'joins' => ['users'],
                 'order' => 'posts.id DESC'
             ]
         );
+        $this->loadModel('Comment');
         foreach ($d['ownPosts'] as $oPost) {
+            $oPost->comments = $this->Comment->get(
+                [
+                    'where' => 'post_id = ' . $oPost->p_id,
+                    'order' => 'comments.id DESC',
+                    'joins' => ['users']
+                ]
+            );
             if($oPost->author_id != $oPost->target_id) {
                 $oPost->target = $this->User->getFirst(
                   [
@@ -98,11 +107,21 @@ class UsersController extends AppController
 
         $d['recevedPosts'] = $this->Post->get(
             [
+                'fields'=>'posts.id as p_id, text, avatar, firstname, lastname, comment_count, posts.date',
                 'where' => 'target_id = ' . $id . ' AND author_id != ' . $id,
                 'joins' => ['users']
             ]
         );
-
+        foreach ($d['recevedPosts'] as $rPost) {
+            $rPost->comments = $this->Comment->get(
+                [
+                    'fields'=> 'avatar, comments.text, comments.date',
+                    'where' => 'post_id = ' . $rPost->p_id,
+                    'order' => 'comments.id DESC',
+                    'joins' => ['users']
+                ]
+            );
+        }
         $this->set($d);
     }
 
