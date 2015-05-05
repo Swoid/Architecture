@@ -62,6 +62,11 @@ class PostsController extends AppController
                 'joins' => ['users']
             ]
         );
+        $this->loadModel('Notification');
+        $this->Notification->markPostAsRead($post_id, $_SESSION['id']);
+        foreach($d['comments'] as $comment) {
+            $this->Notification->markCommentAsRead($comment->c_id, $_SESSION['id']);
+        }
 
         $this->set($d);
 
