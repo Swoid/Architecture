@@ -34,6 +34,39 @@ class PostsController extends AppController
         $this->set($d);
     }
 
+    public function view($post_id)
+    {
+        if (!is_numeric($post_id)) {
+            $this->Session->setFlash('Ce post n‘existe pas');
+            $this->redirect($_SERVER['HTTP_REFERER'], true);
+        }
+
+        $d['post'] = $this->Post->getFirst(
+            [
+                'fields' => 'firstname, lastname, avatar, image, text, posts.date, users.id as u_id, posts.id as p_id, comment_count',
+                'where'=>'posts.id = '.$post_id,
+                'joins'=> ['users']
+            ]
+        );
+
+        if(!$d['post']) {
+            $this->Session->setFlash('Ce post n‘existe pas');
+            $this->redirect($_SERVER['HTTP_REFERER'], true);
+        }
+
+        $this->loadModel('Comment');
+        $d['comments'] = $this->Comment->get(
+            [
+                'fields' => 'firstname, lastname, text, users.id as u_id, comments.id as c_id, avatar, comments.date',
+                'where' => 'post_id = ' . $post_id,
+                'joins' => ['users']
+            ]
+        );
+
+        $this->set($d);
+
+    }
+
     /**
      * Publier un message
      */
