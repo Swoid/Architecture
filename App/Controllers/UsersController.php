@@ -110,7 +110,8 @@ class UsersController extends AppController
             [
                 'fields'=>'posts.id as p_id, text, avatar, firstname, lastname, comment_count, posts.date, author_id, target_id',
                 'where' => 'target_id = ' . $id . ' AND author_id != ' . $id,
-                'joins' => ['users']
+                'joins' => ['users'],
+                'order' => 'posts.id DESC'
             ]
         );
         foreach ($d['recevedPosts'] as $rPost) {
