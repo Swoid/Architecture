@@ -6,6 +6,7 @@
     - Color in input text
     - Alerts
     - formlaire des commentaires
+    - page de vue d'un post
 - PHP
     - Ajout des commentaires
     - System d'image
