@@ -8,7 +8,7 @@
         <li>
             <a href="<?= Html::href('posts/view/' . $comment->post_id); ?>">
                 <?= Html::img($comment->avatar . '-s.png'); ?>
-                <span><?= $comment->text; ?></span>
+                <span>A émis un commentaire </span>
                 <span class="time"><?= date('H:i', strtotime($comment->date)); ?></span>
             </a>
         </li>
@@ -17,7 +17,7 @@
         <li>
             <a href="<?= Html::href('posts/view/' . $post->id); ?>">
                 <?= Html::img($post->avatar . '-s.png'); ?>
-                <span><?= $post->text; ?></span>
+                <span>A publié un message sur votre profil</span>
                 <span class="time"><?= date('H:i', strtotime($post->date)); ?></span>
             </a>
         </li>
