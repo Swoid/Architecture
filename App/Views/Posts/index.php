@@ -7,8 +7,8 @@
             <div class="post">
                 <div class="header">
                     <img src="<?= ASSETS . 'img/' . $post->avatar . '-m.png'; ?>" alt="" width="59"/>
-                    <span class="<?= isset($post->target) ? 'first' : ''; ?>"><?= $post->firstname . ' ' . $post->lastname; ?></span>
-                    <span><?= isset($post->target) ? ' ' . $post->target->firstname . ' ' . $post->target->lastname : ''; ?></span>
+                    <span class="<?= isset($post->target) ? 'first' : ''; ?>"><a href="<?= Html::href('users/index/' . $post->u_id); ?>"><?= $post->firstname . ' ' . $post->lastname; ?></a></span>
+                    <span><?= isset($post->target) ? ' <a href="' . Html::href('users/index/' .  $post->target->id) . '">' . $post->target->firstname . ' ' . $post->target->lastname . '</a> '  : ''; ?></span>
 
                     <p class="date"><?= Date::dateToFr($post->date); ?></p>
                 </div>
@@ -16,7 +16,7 @@
                     <?php if(!is_null($post->image)): ?>
                         <?= Html::img($post->image); ?>
                     <?php endif; ?>
-                    <?= $post->text; ?>
+                    <a href="<?= Html::href('posts/view/' . $post->p_id); ?>"><?= $post->text; ?></a>
                 </p>
 
                 <div class="footer">
@@ -47,8 +47,8 @@
             <div class="post">
                 <div class="header">
                     <img src="<?= ASSETS . 'img/' . $post->avatar. '-m.png'; ?>" alt="" width="59"/>
-                    <span class="<?= isset($post->target) ? 'first' : ''; ?>"><?= $post->firstname . ' ' . $post->lastname; ?></span>
-                    <?= isset($post->target) ? '<span>' . $post->target->firstname . ' ' . $post->target->lastname . '</span>' : ''; ?>
+                    <span class="<?= isset($post->target) ? 'first' : ''; ?>"><a href="<?= Html::href('users/index/' . $post->u_id); ?>"><?= $post->firstname . ' ' . $post->lastname; ?></a></span>
+                    <span><?= isset($post->target) ? ' <a href="' . Html::href('users/index/' .  $post->target->id) . '">' . $post->target->firstname . ' ' . $post->target->lastname . '</a> '  : ''; ?></span>
 
                     <p class="date"><?= Date::dateToFr($post->date); ?></p>
                 </div>
@@ -56,7 +56,7 @@
                     <?php if(!is_null($post->image)): ?>
                         <?= Html::img($post->image); ?>
                     <?php endif; ?>
-                    <?= $post->text; ?>
+                    <a href="<?= Html::href('posts/view/' . $post->p_id); ?>"><?= $post->text; ?></a>
                 </p>
 
                 <div class="footer">
