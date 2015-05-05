@@ -19,9 +19,9 @@ class Notification extends AppModel
      * @param $friend_id
      * @param $user_id
      */
-    public function markMessagesAsRead($friend_id, $user_id)
+    public function markAsRead($ref, $friend_id, $user_id)
     {
-        $sql = "UPDATE notifications SET seen = 1 WHERE author_id = $friend_id  AND target_id = $user_id";
+        $sql = "UPDATE notifications SET seen = 1 WHERE author_id = $friend_id  AND target_id = $user_id AND ref = '$ref'";
         $this->db->query($sql);
     }
 
