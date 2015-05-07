@@ -7,6 +7,7 @@
     - Alerts
     - formlaire des commentaires
     - page de vue d'un post
+    - Revoir design maintenant qu'il y a des liens de partout :p
 - PHP
     - Ajout des commentaires
     - System d'image
